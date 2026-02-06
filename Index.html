@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftQueue | Virtual Line</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SwiftQueue 🚀</h1>
+            <p>Smart Waiting Room Management</p>
+        </header>
+
+        <main class="dashboard">
+            <section class="display-card">
+                <h2>Now Serving</h2>
+                <div id="now-serving" class="token-number">--</div>
+                <div class="stats">
+                    <p>Next in Line: <span id="next-token">None</span></p>
+                    <p>Total Waiting: <span id="queue-count">0</span></p>
+                </div>
+            </section>
+
+            <section class="admin-panel">
+                <h3>Admin Controls</h3>
+                <div class="button-group">
+                    <button id="add-btn" class="btn-primary">Add Customer</button>
+                    <button id="next-btn" class="btn-success">Call Next</button>
+                    <button id="reset-btn" class="btn-danger">Reset Day</button>
+                </div>
+                <div class="log">
+                    <h4>Waiting List</h4>
+                    <ul id="queue-list"></ul>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
