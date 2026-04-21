@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harman Glass & Plywood House – Chamkaur Sahib</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#1a3c6e;--primary-d:#0e2445;--accent:#f5a623;--accent2:#e63946;
+  --green:#27ae60;--bg:#f2f5fb;--muted:#6b7280;--border:#dde3ef;--radius:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:#1c1c1c;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+
+/* TOP STRIP */
+.topstrip{background:var(--primary-d);color:#c5d8f0;font-size:12px;padding:5px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px;}
+.topstrip a{color:#c5d8f0;margin-left:12px;transition:color .2s;}
+.topstrip a:hover{color:var(--accent);}
+
+/* NAVBAR */
+.navbar{background:var(--primary);position:sticky;top:0;z-index:1000;box-shadow:0 2px 14px rgba(0,0,0,.25);}
+.nav-inner{max-width:1300px;margin:auto;display:flex;align-items:center;gap:10px;padding:10px 16px;}
+
+/* hamburger */
+.hbg{background:none;border:none;cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:6px;border-radius:8px;flex-shrink:0;transition:background .2s;}
+.hbg:hover{background:rgba(255,255,255,.13);}
+.hbg span{display:block;width:22px;height:2.5px;background:#fff;border-radius:2px;transition:.3s;}
+.hbg.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+.hbg.open span:nth-child(2){opacity:0;}
+.hbg.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+
+/* logo */
+.logo{display:flex;align-items:center;gap:9px;flex-shrink:0;text-decoration:none;}
+.logo-img{height:48px;width:auto;max-width:160px;object-fit:contain;filter:drop-shadow(0 1px 4px rgba(0,0,0,.3));flex-shrink:0;}
+.logo-txt{color:#fff;line-height:1.15;}
+.logo-txt strong{font-family:'Baloo 2',sans-serif;font-size:14.5px;font-weight:800;display:block;}
+.logo-txt small{font-size:10.5px;color:#9ecae4;display:block;}
+
+/* search */
+.search-wrap{flex:1;position:relative;}
+.search-row{display:flex;border-radius:8px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.2);}
+.search-row select{padding:0 10px;border:none;background:#dfeeff;color:var(--primary);font-size:12.5px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;outline:none;border-right:1px solid #bcd3ef;flex-shrink:0;}
+.search-row input{flex:1;border:none;outline:none;padding:10px 14px;font-size:14px;font-family:'Nunito',sans-serif;min-width:0;}
+.search-row button{background:var(--accent);border:none;padding:0 18px;font-size:18px;color:#fff;cursor:pointer;transition:background .2s;flex-shrink:0;}
+.search-row button:hover{background:#d4881a;}
+
+.suggestions{display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:#fff;border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,.15);z-index:500;overflow:hidden;}
+.suggestions.show{display:block;}
+.sug-item{padding:10px 16px;font-size:13.5px;cursor:pointer;border-bottom:1px solid #f4f4f4;display:flex;align-items:center;gap:10px;transition:background .15s;}
+.sug-item:hover{background:#f0f4ff;}
+
+/* nav icons */
+.nav-icons{display:flex;align-items:center;gap:2px;flex-shrink:0;}
+.nib{background:none;border:none;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 10px;border-radius:8px;font-size:11px;font-family:'Nunito',sans-serif;position:relative;transition:background .2s;white-space:nowrap;}
+.nib:hover{background:rgba(255,255,255,.13);}
+.nib .ico{font-size:21px;line-height:1;}
+.nbadge{position:absolute;top:3px;right:5px;background:var(--accent2);color:#fff;font-size:10px;font-weight:800;min-width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+
+/* ── MOBILE NAVBAR: 2-row layout ── */
+.nav-row1{display:flex;align-items:center;gap:8px;width:100%;}
+.nav-row2{display:none;}/* hidden on desktop */
+
+/* CATEGORY NAV */
+.catnav{background:#fff;border-bottom:1.5px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+.catnav::-webkit-scrollbar{display:none;}
+.catnav-inner{max-width:1300px;margin:auto;display:flex;padding:0 8px;}
+.cnbtn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 16px;cursor:pointer;font-size:11.5px;font-weight:700;color:var(--muted);border-bottom:2.5px solid transparent;white-space:nowrap;flex-shrink:0;transition:all .2s;}
+.cnbtn:hover,.cnbtn.act{color:var(--primary);border-bottom-color:var(--primary);}
+.cnbtn .cni{font-size:18px;}
+
+/* MAIN WRAP */
+.wrap{max-width:1300px;margin:0 auto;padding:0 16px;}
+
+/* HERO SLIDER */
+.hero{margin:18px 0 0;}
+.slider{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.14);}
+.slides-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);}
+.slide{min-width:100%;display:flex;align-items:center;padding:36px 48px;position:relative;overflow:hidden;min-height:240px;}
+.s0{background:linear-gradient(125deg,#0e2445 0%,#1a3c6e 55%,#2a6fbd 100%);}
+.s1{background:linear-gradient(125deg,#0f3d1f 0%,#1a6e35 55%,#27ae60 100%);}
+.s2{background:linear-gradient(125deg,#3d1a5a 0%,#6c3483 55%,#a569bd 100%);}
+.s3{background:linear-gradient(125deg,#5a1a0f 0%,#b03a2e 55%,#e74c3c 100%);}
+.slide-txt{color:#fff;z-index:2;max-width:55%;}
+.slide-tag{display:inline-block;background:var(--accent);color:#1a3c6e;font-size:11px;font-weight:800;padding:3px 12px;border-radius:20px;margin-bottom:10px;}
+.slide-txt h2{font-family:'Baloo 2',sans-serif;font-size:2rem;font-weight:800;line-height:1.1;margin-bottom:10px;}
+.slide-txt p{font-size:13.5px;opacity:.85;margin-bottom:18px;}
+.slide-txt .sbtn{display:inline-block;background:var(--accent);color:#1a3c6e;padding:10px 26px;border-radius:8px;font-weight:800;font-size:14px;transition:.2s;}
+.slide-txt .sbtn:hover{background:#e89a00;transform:translateY(-1px);}
+.slide-emoji{position:absolute;right:48px;top:50%;transform:translateY(-50%);font-size:130px;opacity:.14;}
+.s-arr{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.2);border:none;color:#fff;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:5;}
+.s-arr:hover{background:rgba(255,255,255,.38);}
+.s-arr.l{left:12px;}.s-arr.r{right:12px;}
+.s-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:5;}
+.sdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .2s;}
+.sdot.on{background:#fff;width:22px;border-radius:4px;}
+
+/* PROMO */
+.promo-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px;}
+.promo{border-radius:var(--radius);padding:18px 16px;color:#fff;position:relative;overflow:hidden;cursor:pointer;transition:.2s;}
+.promo:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.18);}
+.promo .pe{position:absolute;right:-6px;bottom:-10px;font-size:65px;opacity:.18;}
+.promo h3{font-family:'Baloo 2',sans-serif;font-size:15px;font-weight:800;}
+.promo p{font-size:12px;opacity:.85;margin-top:3px;}
+.p1{background:linear-gradient(135deg,#0e2445,#1a5276);}
+.p2{background:linear-gradient(135deg,#0f3d1f,#1e8449);}
+.p3{background:linear-gradient(135deg,#6e4c10,#f39c12);}
+.p4{background:linear-gradient(135deg,#6e1010,#e74c3c);}
+
+/* STATS */
+.statsrow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px;}
+.stcard{background:#fff;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.stico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.b{background:#e8f0fe;}.o{background:#fff4e0;}.g{background:#e6f9f0;}.r{background:#fff0f0;}
+.sth3{font-family:'Baloo 2',sans-serif;font-size:21px;font-weight:800;}
+.stp{font-size:11.5px;color:var(--muted);}
+
+/* SECTION HEADING */
+.sh{display:flex;align-items:center;justify-content:space-between;margin:28px 0 14px;}
+.sh h2{font-family:'Baloo 2',sans-serif;font-size:1.35rem;font-weight:800;color:var(--primary);}
+.sh a{font-size:12.5px;font-weight:700;color:var(--primary);border:1.5px solid var(--primary);padding:4px 14px;border-radius:6px;transition:.2s;}
+.sh a:hover{background:var(--primary);color:#fff;}
+
+/* CATEGORY CARDS */
+.catgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;}
+.catcard{background:#fff;border-radius:14px;padding:18px 10px;text-align:center;cursor:pointer;border:2px solid transparent;box-shadow:0 2px 10px rgba(0,0,0,.06);transition:.22s;}
+.catcard:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 8px 22px rgba(26,60,110,.13);}
+.catcard .ci{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 9px;}
+.catcard h4{font-size:12.5px;font-weight:700;}
+.catcard p{font-size:11px;color:var(--muted);margin-top:2px;}
+
+/* PRODUCT GRID */
+.prodgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.pcard{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07);border:1.5px solid transparent;cursor:pointer;transition:.22s;display:flex;flex-direction:column;}
+.pcard:hover{transform:translateY(-5px);box-shadow:0 10px 28px rgba(26,60,110,.14);border-color:var(--primary);}
+.pimg{height:165px;display:flex;align-items:center;justify-content:center;font-size:70px;background:linear-gradient(135deg,#eef2ff,#dde5ff);position:relative;}
+.pbadge{position:absolute;top:10px;left:10px;color:#fff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px;z-index:2;}
+.sale{background:var(--accent2);}.new{background:var(--green);}.hot{background:#ff6b35;}
+.pwish{position:absolute;top:9px;right:9px;background:#fff;border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,.15);font-size:14px;display:flex;align-items:center;justify-content:center;color:#ccc;transition:.2s;}
+.pwish:hover,.pwish.liked{color:var(--accent2);}
+.pbody{padding:11px 12px;flex:1;display:flex;flex-direction:column;gap:3px;}
+.pbrand{font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;}
+.pname{font-size:13px;font-weight:700;line-height:1.3;}
+.pstars{color:var(--accent);font-size:12px;}
+.pstars span{color:var(--muted);font-size:11px;}
+.pprice{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:4px;}
+.pprice .pr{font-family:'Baloo 2',sans-serif;font-size:16.5px;font-weight:800;color:var(--primary);}
+.pprice .ol{font-size:11.5px;color:var(--muted);text-decoration:line-through;}
+.pprice .of{font-size:11px;color:var(--green);font-weight:700;}
+.pact{padding:8px 12px 12px;display:flex;gap:7px;margin-top:auto;}
+.bac{flex:1;background:var(--primary);color:#fff;border:none;border-radius:7px;padding:8px 0;font-size:12.5px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;transition:.2s;}
+.bac:hover{background:var(--primary-d);}
+.bby{flex:1;background:var(--accent);color:#fff;border:none;border-radius:7px;padding:8px 0;font-size:12.5px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;transition:.2s;}
+.bby:hover{background:#d4881a;}
+
+/* FLASH SALE */
+.flash{background:linear-gradient(120deg,var(--primary-d),#1a3c6e,#2a6fbd);border-radius:var(--radius);padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:28px;}
+.flash-l h2{font-family:'Baloo 2',sans-serif;font-size:1.4rem;color:#fff;font-weight:800;}
+.flash-l p{color:#9ecae4;font-size:13px;margin-top:4px;}
+.flash-r{display:flex;align-items:center;gap:16px;flex-shrink:0;flex-wrap:wrap;}
+.countdown{display:flex;gap:10px;}
+.cblk{background:rgba(255,255,255,.15);border-radius:8px;padding:8px 14px;text-align:center;color:#fff;min-width:56px;}
+.cblk b{font-family:'Baloo 2',sans-serif;font-size:26px;display:block;font-weight:800;}
+.cblk small{font-size:10px;text-transform:uppercase;opacity:.75;}
+.bshop{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:12px 24px;font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:.2s;white-space:nowrap;}
+.bshop:hover{background:#d4881a;}
+
+/* FEATURES */
+.featrow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px;}
+.feat{background:#fff;border-radius:var(--radius);padding:16px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);border:1px solid var(--border);}
+.feat .fi{font-size:26px;flex-shrink:0;}
+.feat h4{font-size:13px;font-weight:800;}
+.feat p{font-size:11.5px;color:var(--muted);margin-top:1px;}
+
+/* BRANDS */
+.brands{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;}
+.brands::-webkit-scrollbar{display:none;}
+.brand{flex-shrink:0;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:9px 20px;font-size:13px;font-weight:800;color:var(--primary);cursor:pointer;transition:.2s;white-space:nowrap;}
+.brand:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
+
+/* TESTIMONIALS */
+.testgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.testcard{background:#fff;border-radius:var(--radius);padding:18px;box-shadow:0 2px 10px rgba(0,0,0,.07);border:1px solid var(--border);}
+.testcard .ts{color:var(--accent);font-size:13.5px;margin-bottom:8px;}
+.testcard .tp{font-size:13px;color:var(--muted);line-height:1.6;}
+.trev{display:flex;align-items:center;gap:10px;margin-top:14px;}
+.tav{width:36px;height:36px;border-radius:50%;background:#eef2ff;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.trname{font-weight:800;font-size:13px;}
+.trloc{font-size:11px;color:var(--muted);}
+
+/* CART DRAWER */
+.cart-drawer{position:fixed;right:-360px;top:0;width:340px;height:100vh;background:#fff;z-index:1600;overflow-y:auto;transition:right .3s cubic-bezier(.4,0,.2,1);box-shadow:-4px 0 24px rgba(0,0,0,.18);display:flex;flex-direction:column;}
+.cart-drawer.open{right:0;}
+.cdhead{background:var(--primary);color:#fff;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.cdhead h3{font-family:'Baloo 2',sans-serif;font-size:16.5px;}
+.cdclose{background:none;border:none;color:#fff;font-size:22px;cursor:pointer;}
+.cditems{flex:1;padding:14px;overflow-y:auto;}
+.cditem{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+.cdimg{width:50px;height:50px;border-radius:8px;background:#eef2ff;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;}
+.cdinfo h4{font-size:13px;font-weight:700;line-height:1.3;}
+.cdinfo .cdp{font-size:14px;font-weight:800;color:var(--primary);margin-top:3px;}
+.qctrl{display:flex;align-items:center;gap:8px;margin-top:6px;}
+.qctrl button{width:26px;height:26px;border-radius:6px;border:1.5px solid var(--border);background:#f2f5fb;cursor:pointer;font-size:14px;font-weight:800;}
+.qctrl span{font-weight:800;font-size:13px;min-width:20px;text-align:center;}
+.cdmrm{background:none;border:none;color:#ccc;cursor:pointer;font-size:16px;margin-left:auto;align-self:flex-start;margin-top:4px;transition:.2s;}
+.cdmrm:hover{color:var(--accent2);}
+.cdempty{text-align:center;padding:50px 20px;color:var(--muted);}
+.cdempty .ce{font-size:55px;margin-bottom:12px;}
+.cdfoot{padding:16px;border-top:2px solid var(--border);background:#f8fafd;flex-shrink:0;}
+.cdtotal{display:flex;justify-content:space-between;font-size:15px;font-weight:800;margin-bottom:12px;}
+.bchk{width:100%;padding:13px;background:var(--green);color:#fff;border:none;border-radius:9px;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:.2s;}
+.bchk:hover{background:#1e8449;}
+
+/* SIDEBAR */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:1400;opacity:0;pointer-events:none;transition:opacity .3s;}
+.overlay.on{opacity:1;pointer-events:all;}
+.sidebar{position:fixed;left:-300px;top:0;width:285px;height:100vh;background:#fff;z-index:1500;overflow-y:auto;transition:left .3s cubic-bezier(.4,0,.2,1);box-shadow:4px 0 28px rgba(0,0,0,.2);}
+.sidebar.open{left:0;}
+.sbhead{background:var(--primary);color:#fff;padding:22px 18px 16px;}
+.sbhead h2{font-family:'Baloo 2',sans-serif;font-size:16px;}
+.sbhead p{font-size:12px;opacity:.7;margin-top:2px;}
+.sbsec{padding:6px 0;border-bottom:1px solid var(--border);}
+.sbsec h5{font-size:10.5px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;padding:10px 18px 3px;font-weight:700;}
+.sbitem{display:flex;align-items:center;gap:12px;padding:12px 18px;cursor:pointer;font-size:14px;font-weight:600;transition:background .15s;}
+.sbitem:hover{background:#f0f4ff;}
+.sbitem .si{font-size:18px;width:24px;text-align:center;}
+
+/* FOOTER */
+footer{background:var(--primary-d);color:#9ecae4;padding:40px 0 20px;margin-top:40px;}
+.fg{max-width:1300px;margin:auto;padding:0 16px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;}
+.fg h4{color:#fff;font-size:13.5px;font-weight:700;margin-bottom:12px;}
+.fg a,.fg p{font-size:12.5px;color:#9ecae4;line-height:2.1;display:block;}
+.fg a:hover{color:var(--accent);}
+.flogo{font-family:'Baloo 2',sans-serif;font-size:17px;font-weight:800;color:#fff;margin-bottom:8px;}
+.socials{display:flex;gap:9px;margin-top:14px;}
+.soc{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:16px;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+.soc:hover{transform:scale(1.12);box-shadow:0 4px 16px rgba(0,0,0,.3);}
+.soc-ig:hover{box-shadow:0 4px 20px rgba(220,39,67,.5);}
+.fbot{max-width:1300px;margin:18px auto 0;padding:16px 16px 0;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;font-size:12px;flex-wrap:wrap;gap:8px;}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:#1e8449;color:#fff;padding:11px 24px;border-radius:30px;font-size:13.5px;font-weight:700;z-index:9999;transition:.35s;box-shadow:0 4px 18px rgba(0,0,0,.22);white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+/* MOBILE BOTTOM NAV */
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;box-shadow:0 -2px 14px rgba(0,0,0,.12);z-index:800;padding:6px 0;}
+.mobile-nav ul{display:flex;list-style:none;justify-content:space-around;}
+.mobile-nav li{display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 10px;cursor:pointer;font-size:10.5px;color:var(--muted);font-weight:700;position:relative;}
+.mobile-nav li.act{color:var(--primary);}
+.mobile-nav li .mico{font-size:22px;}
+.mnb{position:absolute;top:0;right:4px;background:var(--accent2);color:#fff;font-size:9.5px;font-weight:800;min-width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+
+/* ═══════ RESPONSIVE ═══════ */
+
+/* Large Laptop ≤1200px */
+@media(max-width:1200px){
+  .prodgrid{grid-template-columns:repeat(4,1fr);}
+  .featrow{grid-template-columns:repeat(3,1fr);}
+}
+
+/* Tablet Landscape ≤1024px */
+@media(max-width:1024px){
+  .prodgrid{grid-template-columns:repeat(3,1fr);}
+  .catgrid{grid-template-columns:repeat(4,1fr);}
+  .testgrid{grid-template-columns:repeat(2,1fr);}
+  .promo-row{grid-template-columns:repeat(2,1fr);}
+  .statsrow{grid-template-columns:repeat(2,1fr);}
+  .fg{grid-template-columns:1fr 1fr;}
+  .slide-txt h2{font-size:1.6rem;}
+  .featrow{grid-template-columns:repeat(3,1fr);}
+}
+
+/* Tablet Portrait ≤768px */
+@media(max-width:768px){
+  .topstrip .ts-links{display:none;}
+  .logo-txt small{display:none;}
+
+  /* ── 2-ROW NAVBAR ── */
+  .nav-inner{flex-direction:column;gap:0;padding:9px 12px 8px;}
+  /* Row 1: hamburger + logo + icons */
+  .nav-row1{display:flex;align-items:center;gap:8px;width:100%;margin-bottom:7px;}
+  .nav-row1 .logo{flex:1;}
+  /* Row 2: full-width search bar */
+  .nav-row2{display:flex;width:100%;}
+  .nav-row2 .search-wrap{flex:1;}
+  /* hide desktop search row (inside row1) */
+  .nav-row1 .search-wrap{display:none;}
+  /* hide category dropdown in search */
+  .search-row select{display:none;}
+  /* icon sizing */
+  .nib{padding:4px 8px;gap:1px;}
+  .nib .ico{font-size:19px;}
+  .nib span{font-size:10px;}
+  .nbadge{right:2px;top:2px;}
+
+  .catgrid{grid-template-columns:repeat(4,1fr);}
+  .prodgrid{grid-template-columns:repeat(2,1fr);}
+  .testgrid{grid-template-columns:1fr 1fr;}
+  .promo-row{grid-template-columns:1fr 1fr;}
+  .statsrow{grid-template-columns:repeat(2,1fr);}
+  .featrow{grid-template-columns:repeat(2,1fr);}
+  .fg{grid-template-columns:1fr 1fr;}
+
+  .slide{min-height:200px;padding:26px 36px;}
+  .slide-txt h2{font-size:1.4rem;}
+  .slide-emoji{font-size:85px;right:28px;}
+
+  .flash{flex-direction:column;text-align:center;padding:20px 18px;}
+  .flash-r{justify-content:center;}
+
+  body{padding-bottom:66px;}
+  .mobile-nav{display:block;}
+}
+
+/* Mobile ≤480px */
+@media(max-width:480px){
+  .nav-inner{padding:8px 10px 7px;}
+  .logo-img{height:42px;}
+  .search-row input{font-size:13.5px;padding:10px 12px;}
+  .search-row button{padding:0 14px;font-size:17px;}
+
+  .slide{min-height:175px;padding:22px 22px;}
+  .slide-txt{max-width:72%;}
+  .slide-txt h2{font-size:1.1rem;}
+  .slide-txt p{font-size:12px;margin-bottom:12px;}
+  .slide-txt .sbtn{padding:8px 16px;font-size:12.5px;}
+  .slide-emoji{font-size:68px;right:14px;}
+
+  .catgrid{grid-template-columns:repeat(3,1fr);}
+  .catcard{padding:13px 7px;}
+  .catcard .ci{width:46px;height:46px;font-size:22px;}
+  .catcard h4{font-size:11.5px;}
+  .catcard p{display:none;}
+
+  .prodgrid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .pimg{height:140px;font-size:56px;}
+  .pname{font-size:12.5px;}
+  .pprice .pr{font-size:15px;}
+
+  .promo-row{grid-template-columns:1fr 1fr;gap:10px;}
+  .promo h3{font-size:13px;}
+  .statsrow{grid-template-columns:1fr 1fr;}
+  .featrow{grid-template-columns:1fr 1fr;}
+  .testgrid{grid-template-columns:1fr;}
+
+  .flash{padding:16px 14px;}
+  .flash-l h2{font-size:1.1rem;}
+  .countdown{gap:8px;}
+  .cblk{padding:6px 10px;min-width:48px;}
+  .cblk b{font-size:21px;}
+
+  .fg{grid-template-columns:1fr 1fr;}
+  .cart-drawer{width:100vw;right:-100vw;}
+  .cart-drawer.open{right:0;}
+
+  .sh h2{font-size:1.1rem;}
+}
+
+/* Extra Small ≤380px */
+@media(max-width:380px){
+  .catgrid{grid-template-columns:repeat(3,1fr);}
+  .prodgrid{grid-template-columns:repeat(2,1fr);}
+  .promo-row{grid-template-columns:1fr;}
+  .fg{grid-template-columns:1fr;}
+  .statsrow{grid-template-columns:1fr 1fr;}
+}
+
+/* ── PRODUCT IMAGE STYLES ── */
+.pimg{height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;gap:6px;}
+.pimg-glass{background:linear-gradient(145deg,#dbeeff 0%,#90caf9 100%);}
+.pimg-wood{background:linear-gradient(145deg,#fdf3e3 0%,#d4a96a 100%);}
+.pimg-door{background:linear-gradient(145deg,#f5ede3 0%,#a07050 100%);}
+.pimg-hw{background:linear-gradient(145deg,#eef0f5 0%,#90a4ae 100%);}
+.pimg-lam{background:linear-gradient(145deg,#f5eaff 0%,#c39bf5 100%);}
+.pimg-adh{background:linear-gradient(145deg,#eaf8ea 0%,#66bb6a 100%);}
+.pe{font-size:76px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.22));transition:.3s;line-height:1;display:block;}
+.pcard:hover .pe{transform:scale(1.12) translateY(-5px);}
+.ptag{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:rgba(0,0,0,.42);background:rgba(255,255,255,.55);padding:2px 8px;border-radius:20px;}
+.pdesc{font-size:11px;color:var(--muted);line-height:1.4;margin-top:2px;min-height:28px;}
+/* category active filter */
+.pcard.cat-hidden{display:none!important;}
+/* buy button green */
+.bby{background:#25d366;color:#fff;}
+.bby:hover{background:#1da855;}
+
+
+/* ── ENQUIRY FORM ── */
+.enq-box{display:grid;grid-template-columns:1fr 1.6fr;gap:28px;background:#fff;border-radius:16px;padding:30px 28px;box-shadow:0 4px 24px rgba(0,0,0,.08);margin-bottom:32px;}
+.enq-info h3{font-family:'Baloo 2',sans-serif;font-size:1.2rem;font-weight:800;color:#1a3c6e;margin-bottom:8px;}
+.enq-info p{font-size:13px;color:#6b7280;margin-bottom:16px;line-height:1.6;}
+.enq-contact-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;font-size:13px;line-height:1.5;}
+.enq-contact-item span{font-size:20px;flex-shrink:0;}
+.enq-contact-item a{color:#1a3c6e;font-weight:700;}
+.enq-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.enq-field{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:700;color:#374151;}
+.enq-field input,.enq-field select,.enq-field textarea{padding:10px 13px;border:1.5px solid #dde3ef;border-radius:8px;font-size:13.5px;font-family:'Nunito',sans-serif;outline:none;transition:border .2s;}
+.enq-field input:focus,.enq-field select:focus,.enq-field textarea:focus{border-color:#1a3c6e;}
+.enq-btn-wa{padding:11px 22px;background:#25d366;color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:.2s;}
+.enq-btn-wa:hover{background:#1da855;}
+.enq-btn-sub{padding:11px 22px;background:#1a3c6e;color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:.2s;}
+.enq-btn-sub:hover{background:#0e2445;}
+@media(max-width:768px){.enq-box{grid-template-columns:1fr;}.enq-row{grid-template-columns:1fr;}}
+
+/* ── MODAL SYSTEM ── */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:3000;align-items:center;justify-content:center;padding:16px;}
+.modal-bg.show{display:flex;}
+.modal-box{background:#fff;border-radius:16px;padding:28px 26px;width:100%;max-width:480px;position:relative;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.25);}
+.admin-box{max-width:900px;}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#888;transition:color .2s;}
+.modal-close:hover{color:#e74c3c;}
+.modal-tabs{display:flex;gap:0;margin-bottom:20px;border-radius:9px;overflow:hidden;border:1.5px solid #dde3ef;}
+.mtab{flex:1;padding:10px;border:none;background:#f8fafd;font-size:13.5px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;transition:.2s;}
+.mtab.act{background:#1a3c6e;color:#fff;}
+.mfield{margin-bottom:13px;}
+.mfield label{font-size:12.5px;font-weight:700;color:#374151;display:block;margin-bottom:5px;}
+.mfield input,.mfield select,.mfield textarea{width:100%;padding:10px 13px;border:1.5px solid #dde3ef;border-radius:8px;font-size:14px;font-family:'Nunito',sans-serif;outline:none;transition:border .2s;}
+.mfield input:focus,.mfield select:focus{border-color:#1a3c6e;}
+.mbtn{width:100%;padding:12px;background:#1a3c6e;color:#fff;border:none;border-radius:9px;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:.2s;margin-top:4px;}
+.mbtn:hover{background:#0e2445;}
+.merr{color:#e74c3c;font-size:12.5px;font-weight:700;margin-bottom:8px;min-height:18px;}
+
+/* ── ADMIN PANEL ── */
+.admin-section{background:#f8fafd;border-radius:12px;padding:18px;margin-bottom:16px;}
+.admin-section h4{font-family:'Baloo 2',sans-serif;font-size:15px;font-weight:800;color:#1a3c6e;margin-bottom:12px;}
+.admin-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px;}
+.admin-row input,.admin-row select{padding:9px 12px;border:1.5px solid #dde3ef;border-radius:8px;font-size:13px;font-family:'Nunito',sans-serif;outline:none;width:100%;}
+.admin-row input:focus,.admin-row select:focus{border-color:#1a3c6e;}
+.admin-btn{padding:10px 22px;border:none;border-radius:8px;font-size:13.5px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:.2s;}
+.add-btn{background:#27ae60;color:#fff;}
+.add-btn:hover{background:#1e8449;}
+.admin-search-row{display:flex;gap:10px;margin-bottom:12px;}
+.admin-search-row input{flex:1;padding:9px 13px;border:1.5px solid #dde3ef;border-radius:8px;font-size:13px;font-family:'Nunito',sans-serif;outline:none;}
+.admin-search-row select{padding:9px 12px;border:1.5px solid #dde3ef;border-radius:8px;font-size:13px;font-family:'Nunito',sans-serif;outline:none;}
+.admin-table-wrap{overflow-x:auto;max-height:340px;overflow-y:auto;}
+.admin-table{width:100%;border-collapse:collapse;font-size:13px;}
+.admin-table th{background:#1a3c6e;color:#fff;padding:9px 12px;text-align:left;white-space:nowrap;position:sticky;top:0;}
+.admin-table td{padding:9px 12px;border-bottom:1px solid #f0f0f0;vertical-align:middle;}
+.admin-table tr:hover td{background:#f8f9ff;}
+.adm-edit{background:#f5a623;color:#fff;border:none;border-radius:6px;padding:5px 10px;cursor:pointer;font-size:12px;font-weight:700;margin-right:4px;;min-height:36px;touch-action:manipulation;}
+.adm-del{background:#e74c3c;color:#fff;border:none;border-radius:6px;padding:8px 14px;cursor:pointer;font-size:14px;font-weight:700;min-width:44px;min-height:36px;touch-action:manipulation;}
+@media(max-width:600px){.admin-row{grid-template-columns:1fr;}.admin-search-row{flex-direction:column;}}
+
+/* ── NAVBAR USER/ADMIN BTNS ── */
+.nav-user-info{display:flex;align-items:center;gap:6px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;padding:6px 10px;border-radius:8px;background:rgba(255,255,255,.13);border:none;font-family:'Nunito',sans-serif;}
+.nav-user-info:hover{background:rgba(255,255,255,.22);}
+#loginUserBtn span.ico{font-size:19px;}
+
+/* ── SEARCH SUGGESTIONS HIGHLIGHT ── */
+.sug-item b{color:#1a3c6e;}
+.no-results{padding:18px;text-align:center;color:#888;font-size:14px;}
+
+/* ── LOGIN WALL ── */
+#loginWall{display:none;position:fixed;inset:0;background:rgba(14,36,69,.7);z-index:2500;align-items:center;justify-content:center;}
+#loginWall.show{display:flex;}
+.lw-box{background:#fff;border-radius:16px;padding:32px 28px;text-align:center;max-width:380px;width:90%;}
+.lw-box h2{font-family:'Baloo 2',sans-serif;color:#1a3c6e;font-size:1.4rem;margin-bottom:8px;}
+.lw-box p{font-size:13.5px;color:#6b7280;margin-bottom:20px;line-height:1.6;}
+.lw-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.lw-btn{padding:11px 28px;border:none;border-radius:9px;font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;}
+.lw-login{background:#1a3c6e;color:#fff;}
+.lw-skip{background:#f0f4fb;color:#1a3c6e;}
+
+
+/* ── PRODUCT SVG IMAGE STYLES ── */
+.pimg{height:185px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:0;}
+.pimg svg{width:100%;height:100%;object-fit:contain;}
+.pbadge{position:absolute;top:10px;left:10px;color:#fff;font-size:10px;font-weight:800;padding:2px 9px;border-radius:20px;z-index:4;}
+.pwish{position:absolute;top:9px;right:9px;background:#fff;border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,.18);font-size:15px;display:flex;align-items:center;justify-content:center;color:#ccc;z-index:4;transition:.2s;}
+.pwish:hover,.pwish.liked{color:#e63946;}
+.pcard:hover .pimg svg{transform:scale(1.04);transition:.3s;}
+
+/* ── SEARCH RESULTS UI ── */
+#searchResultBar{display:none;background:linear-gradient(90deg,#1a3c6e,#2a6fbd);color:#fff;padding:12px 20px;border-radius:12px;margin-bottom:16px;display:none;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+#searchResultBar.show{display:flex;}
+#searchResultBar h3{font-family:'Baloo 2',sans-serif;font-size:1rem;font-weight:800;}
+#searchResultBar span{font-size:12.5px;opacity:.85;}
+#clearSearchBtn{background:rgba(255,255,255,.2);border:none;color:#fff;padding:6px 14px;border-radius:7px;cursor:pointer;font-size:12.5px;font-weight:700;font-family:'Nunito',sans-serif;}
+#clearSearchBtn:hover{background:rgba(255,255,255,.35);}
+.search-row input{caret-color:#1a3c6e;}
+
+
+/* ── SITE LOCK (no-login) ── */
+#siteLock{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#0e2445 0%,#1a3c6e 55%,#2a6fbd 100%);display:flex;align-items:center;justify-content:center;padding:16px;}
+#siteLock.hide{display:none;}
+.lock-card{background:#fff;border-radius:20px;padding:36px 32px;max-width:440px;width:100%;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.35);}
+.lock-logo{width:80px;height:80px;border-radius:18px;background:linear-gradient(135deg,#f5a623,#e67e22);margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:28px;color:#fff;}
+.lock-card h2{font-family:'Baloo 2',sans-serif;font-size:1.4rem;color:#1a3c6e;font-weight:800;margin-bottom:4px;}
+.lock-card p{font-size:13px;color:#6b7280;margin-bottom:20px;line-height:1.6;}
+.lock-tabs{display:flex;gap:0;margin-bottom:20px;border-radius:10px;overflow:hidden;border:1.5px solid #dde3ef;}
+.lock-tab{flex:1;padding:10px;border:none;background:#f8fafd;font-size:13.5px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;transition:.2s;}
+.lock-tab.act{background:#1a3c6e;color:#fff;}
+.lock-field{text-align:left;margin-bottom:12px;}
+.lock-field label{font-size:12px;font-weight:700;color:#374151;display:block;margin-bottom:5px;}
+.lock-field input{width:100%;padding:10px 14px;border:1.5px solid #dde3ef;border-radius:9px;font-size:14px;font-family:'Nunito',sans-serif;outline:none;transition:.2s;}
+.lock-field input:focus{border-color:#1a3c6e;box-shadow:0 0 0 3px rgba(26,60,110,.08);}
+.lock-btn{width:100%;padding:13px;background:#1a3c6e;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;transition:.2s;margin-top:4px;}
+.lock-btn:hover{background:#0e2445;}
+.lock-btn.green{background:#25d366;}.lock-btn.green:hover{background:#1da855;}
+.lock-err{color:#e74c3c;font-size:12px;font-weight:700;min-height:18px;margin-bottom:6px;text-align:left;}
+.lock-divider{display:flex;align-items:center;gap:10px;margin:14px 0;color:#bbb;font-size:12px;}
+.lock-divider::before,.lock-divider::after{content:'';flex:1;height:1px;background:#e0e0e0;}
+.lock-footer{margin-top:14px;font-size:11.5px;color:#9e9e9e;line-height:1.7;}
+#mainContent{display:none;}
+
+/* ── ADMIN TABS ── */
+.adm-tab-bar{display:flex;gap:4px;margin-bottom:16px;flex-wrap:wrap;}
+.adm-tab{padding:7px 16px;border:none;border-radius:8px;background:#f0f4f8;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;transition:.2s;color:#1a3c6e;}
+.adm-tab.on{background:#1a3c6e;color:#fff;}
+.adm-pane{display:none;}.adm-pane.on{display:block;}
+
+/* ── IMAGE UPLOAD ── */
+.img-upload-box{border:2px dashed #dde3ef;border-radius:12px;padding:18px;text-align:center;cursor:pointer;transition:.2s;background:#f8fafd;}
+.img-upload-box:hover{border-color:#1a3c6e;background:#eef2ff;}
+.img-upload-box input[type=file]{display:none;}
+.img-preview{width:100%;max-height:140px;object-fit:contain;border-radius:8px;margin-top:10px;display:none;}
+.img-preview.show{display:block;}
+
+/* ── USER HISTORY TABLE ── */
+.hist-table{width:100%;border-collapse:collapse;font-size:13px;}
+.hist-table th{background:#1a3c6e;color:#fff;padding:8px 12px;text-align:left;white-space:nowrap;}
+.hist-table td{padding:8px 12px;border-bottom:1px solid #f0f0f0;vertical-align:middle;}
+.hist-table tr:hover td{background:#f8f9ff;}
+.badge-online{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:800;}
+.badge-online.active{background:#e6f9f0;color:#27ae60;}
+.badge-online.offline{background:#fef0f0;color:#e74c3c;}
+
+/* ── STATS CARDS ── */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
+.stat-mini{background:#fff;border-radius:12px;padding:14px 16px;border:1px solid #f0f0f0;}
+.stat-mini .sv{font-family:'Baloo 2',sans-serif;font-size:26px;font-weight:800;color:#1a3c6e;}
+.stat-mini .sl{font-size:11.5px;color:#888;margin-top:2px;}
+@media(max-width:600px){.stat-grid{grid-template-columns:1fr 1fr;}}
+
+/* ── ENQUIRY LIST ── */
+.enq-row-item{background:#fff;border-radius:10px;padding:14px;border:1px solid #f0f0f0;margin-bottom:8px;}
+.enq-row-item h4{font-size:13.5px;font-weight:700;color:#1a3c6e;margin-bottom:4px;}
+.enq-row-item p{font-size:12px;color:#666;line-height:1.6;}
+.enq-row-item .etime{font-size:11px;color:#999;margin-top:6px;}
+
+
+/* Lock page logo improvements */
+.lock-card{background:#fff;text-align:center;}
+.lock-card h1{text-align:center;}
+.lock-field{text-align:left;}
+
+
+/* Custom delete confirm dialog — inside admin panel, always above z-index:3000 */
+#customConfirm{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,0.6);align-items:center;justify-content:center;
+}
+#customConfirm.show{display:flex;}
+.ccd-box{
+  background:#fff;border-radius:16px;padding:28px 24px 20px;
+  max-width:320px;width:90%;text-align:center;
+  box-shadow:0 8px 40px rgba(0,0,0,0.35);
+}
+.ccd-icon{font-size:44px;margin-bottom:10px;}
+.ccd-title{font-family:'Baloo 2',sans-serif;font-size:18px;font-weight:800;color:#1a3c6e;margin-bottom:6px;}
+.ccd-msg{font-size:13.5px;color:#555;margin-bottom:22px;line-height:1.5;}
+.ccd-btns{display:flex;gap:10px;}
+.ccd-cancel{flex:1;background:#f0f4ff;color:#1a3c6e;border:2px solid #c5d3f5;
+  border-radius:10px;padding:11px;font-size:14px;font-weight:700;
+  font-family:'Nunito',sans-serif;cursor:pointer;touch-action:manipulation;}
+.ccd-cancel:hover{background:#dde8ff;}
+.ccd-ok{flex:1;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;border:none;
+  border-radius:10px;padding:11px;font-size:14px;font-weight:800;
+  font-family:'Nunito',sans-serif;cursor:pointer;touch-action:manipulation;}
+.ccd-ok:hover{background:#b03030;}
+</style>
+</head>
+<body>
+<script>
+(function(){
+  try{
+    var s=localStorage.getItem('hgp_sess');
+    if(s){var u=JSON.parse(s);if(u&&u.phone){
+      // Instantly show main content, hide lock — no flash
+      document.addEventListener('DOMContentLoaded',function(){
+        var lock=document.getElementById('siteLock');
+        var main=document.getElementById('mainContent');
+        if(lock)lock.style.display='none';
+        if(main)main.style.display='block';
+      });
+    }}
+  }catch(e){}
+})();
+</script>
+
+
+<!-- ════ SITE LOCK — shown until login ════ -->
+<div id="siteLock">
+  <div class="lock-card">
+        <h1 style="font-family:'Baloo 2',sans-serif;color:#1a3c6e;font-size:1.45rem;font-weight:800;margin:10px 0 2px;line-height:1.2">Harman Glass &amp; Plywood House</h1>
+    <p style="font-size:12px;color:#2a6fbd;font-weight:700;margin:0 0 4px;letter-spacing:.3px">Login Page</p>
+    <p style="font-size:12.5px;color:#6b7280;margin:0 0 16px;line-height:1.55">📍 Shri Chamkaur Sahib, Ropar<br>Please login or sign up to continue shopping.</p>
+    <div class="lock-tabs">
+      <button class="lock-tab act" id="ltLogin" onclick="lockTab('login')">🔐 Login</button>
+      <button class="lock-tab" id="ltSign" onclick="lockTab('signup')">📝 Sign Up</button>
+    </div>
+    <!-- Login -->
+    <div id="lockLoginForm">
+      <div class="lock-field"><label>Mobile Number</label><input type="tel" id="llPhone" placeholder="Enter 10-digit mobile" maxlength="12" inputmode="tel"></div>
+      <div class="lock-field"><label>Password</label><input type="password" id="llPass" placeholder="Enter your password" onkeydown="if(event.key==='Enter')doLockLogin()"></div>
+      <div class="lock-err" id="llErr"></div>
+      <button class="lock-btn" onclick="doLockLogin()">Login &amp; Enter →</button>
+    </div>
+    <!-- Signup -->
+    <div id="lockSignupForm" style="display:none">
+      <div class="lock-field"><label>Full Name *</label><input type="text" id="lsName" placeholder="Your full name"></div>
+      <div class="lock-field"><label>Mobile Number *</label><input type="tel" id="lsPhone" placeholder="10-digit mobile" maxlength="10" inputmode="tel"></div>
+      <div class="lock-field"><label>Password *</label><input type="password" id="lsPass" placeholder="Min 6 characters"></div>
+      <div class="lock-field"><label>City</label><input type="text" id="lsCity" placeholder="Your city / village"></div>
+      <div class="lock-err" id="lsErr"></div>
+      <button class="lock-btn green" onclick="doLockSignup()">Create Account &amp; Enter →</button>
+    </div>
+    <div class="lock-footer">📍 Bank Road, Near City Hospital, Chamkaur Sahib<br>📞 94787 91010 &nbsp;|&nbsp; 95307 34010</div>
+  </div>
+</div>
+
+<!-- ════ MAIN WEBSITE CONTENT (hidden until login) ════ -->
+<div id="mainContent">
+
+<!-- TOP STRIP -->
+<div class="topstrip">
+  <span>📍 Bank Road, Near City Hospital, Shri Chamkaur Sahib, Ropar &nbsp;|&nbsp; 📞 <a href="tel:+919478791010" style="color:#c5d8f0">94787 91010</a> &nbsp;|&nbsp; 📞 <a href="tel:+919530734010" style="color:#c5d8f0">95307 34010</a></span>
+  <div class="ts-links">
+    <a href="#">Track Order</a><a href="#">Sell With Us</a><a href="#">Help</a>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <!-- ROW 1: Hamburger + Logo + Icons (desktop: all in one row with search) -->
+    <div class="nav-row1">
+      <button class="hbg" id="hbg" onclick="toggleSidebar()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="logo" href="#">
+        <img class="logo-img" src="data:image/png;base64,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" alt="Harman Glass & Plywood House Logo">
+    </a>
+    <div class="search-wrap">
+      <div class="search-row">
+        <select id="searchCatFilter" aria-label="Category" onchange="onSearchCatChange(this.value)">
+          <option value="All">All</option>
+          <option value="Glass">Glass</option>
+          <option value="Plywood">Plywood</option>
+          <option value="Doors">Doors</option>
+          <option value="Hardware">Hardware</option>
+          <option value="Laminates">Laminates</option>
+          <option value="Adhesives">Adhesives</option>
+        </select>
+        <input type="text" id="sinput" placeholder="Search glass, plywood, doors…" oninput="runSearch()" onfocus="runSearch()" onblur="hideSug()" onkeydown="if(event.key==='Enter'){triggerSearch();this.blur();}">
+        <button aria-label="Search" onclick="triggerSearch()">🔍</button>
+      </div>
+      <div class="suggestions" id="sugg"></div>
+    </div>
+      <div class="nav-icons">
+        <button class="nib" onclick="toggleCart()">
+          <span class="ico">🛒</span><span>Cart</span>
+          <div class="nbadge" id="cartBadge">0</div>
+        </button>
+        <button class="nib"><span class="ico">❤️</span><span>Wishlist</span></button>
+        <button class="nib" id="loginUserBtn" onclick="handleLoginClick()"><span class="ico">👤</span><span id="loginBtnTxt">Login</span></button>
+      </div>
+    </div><!-- /nav-row1 -->
+
+    <!-- ROW 2: Full-width search (visible on mobile only) -->
+    <div class="nav-row2">
+      <div class="search-wrap">
+        <div class="search-row">
+          <input type="text" id="sinput2" placeholder="Search glass, plywood, doors…"
+            oninput="syncSearch(this.value)" onfocus="syncSearch(this.value)"
+            onblur="hideSug()" onkeydown="if(event.key==='Enter'){syncSearch(this.value);triggerSearch();this.blur();}">
+          <button aria-label="Search" onclick="syncSearch(document.getElementById('sinput2').value);triggerSearch()">🔍</button>
+        </div>
+        <div class="suggestions" id="sugg2"></div>
+      </div>
+    </div><!-- /nav-row2 -->
+  </div>
+</nav>
+
+<!-- CATEGORY NAV -->
+<div class="catnav">
+  <div class="catnav-inner">
+    <div class="cnbtn act" onclick="filterCat(this,'All')"><span class="cni">🏠</span>All</div>
+    <div class="cnbtn" onclick="filterCat(this,'Glass')"><span class="cni">🪟</span>Glass</div>
+    <div class="cnbtn" onclick="filterCat(this,'Plywood')"><span class="cni">🪵</span>Plywood</div>
+    <div class="cnbtn" onclick="filterCat(this,'Doors')"><span class="cni">🚪</span>Doors</div>
+    <div class="cnbtn" onclick="filterCat(this,'Hardware')"><span class="cni">⚙️</span>Hardware</div>
+    <div class="cnbtn" onclick="filterCat(this,'Laminates')"><span class="cni">🗃️</span>Laminates</div>
+    <div class="cnbtn" onclick="filterCat(this,'Adhesives')"><span class="cni">🧴</span>Adhesives</div>
+    <div class="cnbtn" onclick="filterCat(this,'Offers')"><span class="cni">🏷️</span>Deals</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="wrap">
+
+  <!-- SLIDER -->
+  <div class="hero">
+    <div class="slider">
+      <div class="slides-track" id="track">
+        <div class="slide s0">
+          <div class="slide-txt"><span class="slide-tag">PREMIUM QUALITY</span><h2>Toughened &amp;<br>Safety Glass</h2><p>High-strength glass for homes &amp; offices</p><a class="sbtn" href="#">Shop Glass →</a></div>
+          <div class="slide-emoji">🪟</div>
+        </div>
+        <div class="slide s1">
+          <div class="slide-txt"><span class="slide-tag">ISI CERTIFIED</span><h2>BWP &amp; Marine<br>Plywood</h2><p>All grades — best rates in Chamkaur Sahib</p><a class="sbtn" href="#">Shop Plywood →</a></div>
+          <div class="slide-emoji">🪵</div>
+        </div>
+        <div class="slide s2">
+          <div class="slide-txt"><span class="slide-tag">NEW COLLECTION</span><h2>Designer Doors<br>&amp; Windows</h2><p>Modern solid wood &amp; glass panel doors</p><a class="sbtn" href="#">Explore Now →</a></div>
+          <div class="slide-emoji">🚪</div>
+        </div>
+        <div class="slide s3">
+          <div class="slide-txt"><span class="slide-tag">MEGA SALE 🔥</span><h2>Hardware &amp;<br>Fittings Sale</h2><p>Up to 40% off on hinges, handles &amp; locks</p><a class="sbtn" href="#">Grab Deals →</a></div>
+          <div class="slide-emoji">🔩</div>
+        </div>
+      </div>
+      <button class="s-arr l" onclick="slide(-1)">&#8249;</button>
+      <button class="s-arr r" onclick="slide(1)">&#8250;</button>
+      <div class="s-dots" id="dots"></div>
+    </div>
+  </div>
+
+  <!-- PROMO -->
+  <div class="promo-row">
+    <div class="promo p1"><div class="pe">🪟</div><h3>Glass from ₹120/sqft</h3><p>All types in stock</p></div>
+    <div class="promo p2"><div class="pe">🪵</div><h3>Plywood upto 30% Off</h3><p>ISI certified brands</p></div>
+    <div class="promo p3"><div class="pe">🚚</div><h3>Free Delivery</h3><p>In Chamkaur Sahib area</p></div>
+    <div class="promo p4"><div class="pe">🏗️</div><h3>Bulk Orders Welcome</h3><p>Special contractor rates</p></div>
+  </div>
+
+  <!-- STATS -->
+  <div class="statsrow">
+    <div class="stcard"><div class="stico b">🛒</div><div><div class="sth3">4,200+</div><div class="stp">Orders Delivered</div></div></div>
+    <div class="stcard"><div class="stico o">⭐</div><div><div class="sth3">4.8/5</div><div class="stp">Customer Rating</div></div></div>
+    <div class="stcard"><div class="stico g">✅</div><div><div class="sth3">500+</div><div class="stp">Products in Stock</div></div></div>
+    <div class="stcard"><div class="stico r">🚀</div><div><div class="sth3">15 Yrs</div><div class="stp">Trusted Experience</div></div></div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <div class="sh"><h2>🏪 Shop by Category</h2><a href="#">View All →</a></div>
+  <div class="catgrid">
+    <div class="catcard" onclick="filterCat(null,'Glass')"><div class="ci" style="background:#dbeeff;font-size:28px">🪟</div><h4>Plain Glass</h4><p>4 items</p></div>
+    <div class="catcard" onclick="filterCat(null,'Glass')"><div class="ci" style="background:#dbeeff;font-size:28px">🛡️</div><h4>Toughened Glass</h4><p>4 items</p></div>
+    <div class="catcard" onclick="filterCat(null,'Glass')"><div class="ci" style="background:#dbeeff;font-size:28px">🌫️</div><h4>Frosted Glass</h4><p>4 items</p></div>
+    <div class="catcard" onclick="filterCat(null,'Glass')"><div class="ci" style="background:#dbeeff;font-size:28px">🪞</div><h4>Mirror Glass</h4><p>4 items</p></div>
+    <div class="catcard" onclick="filterCat(null,'Plywood')"><div class="ci" style="background:#fdf3e3;font-size:28px">🪵</div><h4>BWP Plywood</h4><p>4 items</p></div>
+    <div class="catcard" onclick="filterCat(null,'Plywood')"><div class="ci" style="background:#fdf3e3;font-size:28px">🧱</div><h4>MDF Board</h4><p>4 items</p></div>
+    <div class="catcard" onclick="filterCat(null,'Doors')"><div class="ci" style="background:#f5ede3;font-size:28px">🚪</div><h4>Flush Doors</h4><p>3 items</p></div>
+    <div class="catcard" onclick="filterCat(null,'Hardware')"><div class="ci" style="background:#eef0f5;font-size:28px">⚙️</div><h4>Hardware</h4><p>4 items</p></div>
+    <div class="catcard" onclick="filterCat(null,'Laminates')"><div class="ci" style="background:#f5eaff;font-size:28px">🗃️</div><h4>Laminates</h4><p>3 items</p></div>
+    <div class="catcard" onclick="filterCat(null,'Adhesives')"><div class="ci" style="background:#eaf8ea;font-size:28px">🧴</div><h4>Adhesives</h4><p>4 items</p></div>
+  </div>
+
+  <!-- SEARCH RESULT BAR -->
+  <div id="searchResultBar">
+    <div>
+      <h3 id="searchResultTitle">🔍 Search Results</h3>
+      <span id="searchResultCount"></span>
+    </div>
+    <button id="clearSearchBtn" onclick="clearSearch()">✕ Clear Search</button>
+  </div>
+
+  <!-- ALL PRODUCTS -->
+  <div class="sh"><h2 id="prodHeading">🛍️ All Products</h2><a href="#" onclick="filterCat(null,'All');return false;">View All →</a></div>
+  <div class="prodgrid" id="allProdGrid"></div>
+
+  <!-- FLASH SALE -->
+  <div class="flash">
+    <div class="flash-l">
+      <h2>⚡ Flash Sale — Upto 45% OFF on Hardware!</h2>
+      <p>Limited time offer on hinges, handles, locks &amp; accessories</p>
+    </div>
+    <div class="flash-r">
+      <div class="countdown">
+        <div class="cblk"><b id="ch">03</b><small>Hrs</small></div>
+        <div class="cblk"><b id="cm">47</b><small>Min</small></div>
+        <div class="cblk"><b id="cs">22</b><small>Sec</small></div>
+      </div>
+      <button class="bshop">Shop Now →</button>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="featrow">
+    <div class="feat"><div class="fi">🚚</div><div><h4>Free Delivery</h4><p>In Chamkaur Sahib</p></div></div>
+    <div class="feat"><div class="fi">✅</div><div><h4>ISI Certified</h4><p>Quality guaranteed</p></div></div>
+    <div class="feat"><div class="fi">🔁</div><div><h4>Easy Returns</h4><p>7-day hassle-free</p></div></div>
+    <div class="feat"><div class="fi">💬</div><div><h4>Expert Support</h4><p>Mon–Sat 9am–7pm</p></div></div>
+    <div class="feat"><div class="fi">💳</div><div><h4>Secure Payment</h4><p>UPI, Card, COD</p></div></div>
+  </div>
+
+  <!-- BRANDS -->
+  <div class="sh"><h2>🏷️ Top Brands We Carry</h2></div>
+  <div class="brands">
+    <div class="brand">Century Ply</div><div class="brand">Greenply</div><div class="brand">Kitply</div>
+    <div class="brand">Merino</div><div class="brand">Saint-Gobain</div><div class="brand">Asahi India</div>
+    <div class="brand">Godrej Locks</div><div class="brand">Hafele</div><div class="brand">Dorset</div>
+    <div class="brand">Ebco</div><div class="brand">Fevicol Marine</div><div class="brand">Heatax</div><div class="brand">Probond</div><div class="brand">Today Bond</div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="sh"><h2>⭐ Customer Reviews</h2></div>
+  <div class="testgrid">
+    <div class="testcard"><div class="ts">★★★★★</div><p class="tp">Excellent quality toughened glass. Delivered on time in Chamkaur Sahib. Perfect finish. Highly recommend!</p><div class="trev"><div class="tav">👨</div><div><div class="trname">Gurpreet Singh</div><div class="trloc">Chamkaur Sahib</div></div></div></div>
+    <div class="testcard"><div class="ts">★★★★★</div><p class="tp">Best plywood rates in the area. Ordered Century Ply 18mm BWP for kitchen cabinets. Superb quality!</p><div class="trev"><div class="tav">👩</div><div><div class="trname">Manpreet Kaur</div><div class="trloc">Ropar</div></div></div></div>
+    <div class="testcard"><div class="ts">★★★★☆</div><p class="tp">Got all renovation material here — doors, glass, hardware. One stop shop. Staff very helpful!</p><div class="trev"><div class="tav">👨</div><div><div class="trname">Rajesh Kumar</div><div class="trloc">Morinda</div></div></div></div>
+    <div class="testcard"><div class="ts">★★★★★</div><p class="tp">Same-day delivery! Needed glass urgently for office. Arranged in 3 hours. Truly professional!</p><div class="trev"><div class="tav">👨</div><div><div class="trname">Harjinder Gill</div><div class="trloc">Chamkaur Sahib</div></div></div></div>
+  </div>
+
+</div><!-- /wrap -->
+
+
+<!-- ENQUIRY FORM -->
+<div class="wrap" id="enquirySection">
+  <div class="sh"><h2>📩 Send an Enquiry</h2></div>
+  <div class="enq-box">
+    <div class="enq-info">
+      <h3>Get in Touch With Us</h3>
+      <p>Have questions about any product? Need a bulk quote? We'll respond within 2 hours during business hours.</p>
+      <div class="enq-contact-item"><span>📞</span><div><strong>Call / WhatsApp</strong><br><a href="tel:+919478791010">94787 91010</a> &nbsp;|&nbsp; <a href="tel:+919530734010">95307 34010</a></div></div>
+      <div class="enq-contact-item"><span>📍</span><div><strong>Visit Us</strong><br>Bank Road, Near City Hospital,<br>Shri Chamkaur Sahib, Ropar</div></div>
+      <div class="enq-contact-item"><span>🕐</span><div><strong>Working Hours</strong><br>Mon – Sat: 9:00 AM – 7:00 PM</div></div>
+    </div>
+    <div class="enq-form">
+      <div class="enq-row">
+        <div class="enq-field">
+          <label>Your Name *</label>
+          <input type="text" id="enqName" placeholder="e.g. Gurpreet Singh">
+        </div>
+        <div class="enq-field">
+          <label>Mobile Number *</label>
+          <input type="tel" id="enqPhone" placeholder="e.g. 98765 43210">
+        </div>
+      </div>
+      <div class="enq-row">
+        <div class="enq-field">
+          <label>Product / Category</label>
+          <select id="enqCat">
+            <option value="">-- Select Category --</option>
+            <option>Glass</option><option>Plywood</option><option>Doors</option>
+            <option>Hardware</option><option>Laminates</option><option>Adhesives</option><option>Other</option>
+          </select>
+        </div>
+        <div class="enq-field">
+          <label>City / Location</label>
+          <input type="text" id="enqCity" placeholder="e.g. Chamkaur Sahib">
+        </div>
+      </div>
+      <div class="enq-field" style="margin-top:12px">
+        <label>Your Message *</label>
+        <textarea id="enqMsg" rows="4" placeholder="Describe what you need — product, quantity, size, etc."></textarea>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+        <button class="enq-btn-wa" onclick="submitEnqWA()">💬 Send via WhatsApp</button>
+        <button class="enq-btn-sub" onclick="submitEnqDirect()">📩 Submit Enquiry</button>
+      </div>
+      <p id="enqSuccess" style="display:none;color:#27ae60;font-weight:700;margin-top:10px;font-size:13.5px">✅ Enquiry submitted! We'll contact you shortly.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="fg">
+    <div>
+      <div class="flogo">🏗️ Harman Glass &amp; Plywood House</div>
+      <p>Trusted destination for premium glass, plywood, doors &amp; windows in Shri Chamkaur Sahib, Punjab.</p>
+      <p style="margin-top:10px">📞 +91 98765 43210<br>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3f575e4d525e5158535e4c4c4f53464850505b7f58525e5653115c5052">[email&#160;protected]</a><br>📍 Main Market, Chamkaur Sahib – 140110</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/harman_glass_plywood_hardware?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Follow us on Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);text-decoration:none;flex-shrink:0;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='scale(1.12)';this.style.boxShadow='0 4px 20px rgba(220,39,67,.55)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0;">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4.5"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <h4>Products</h4>
+      <a href="#">Plain &amp; Float Glass</a><a href="#">Toughened Glass</a>
+      <a href="#">Frosted &amp; Mirror Glass</a><a href="#">BWP Plywood</a>
+      <a href="#">MDF &amp; HDF Board</a><a href="#">Doors &amp; Frames</a><a href="#">Hardware &amp; Locks</a><a href="#">Adhesives &amp; Bonds</a>
+    </div>
+    <div>
+      <h4>Customer Care</h4>
+      <a href="#">My Orders</a><a href="#">Track Order</a><a href="#">Return Policy</a>
+      <a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">FAQs</a>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#">About Us</a><a href="#">Bulk Orders</a><a href="#">Contractor Deals</a>
+      <a href="#">Blog &amp; Tips</a><a href="#">Careers</a><a href="#">Contact Us</a>
+    </div>
+  </div>
+  <div class="fbot">
+    <span>© 2025 Harman Glass &amp; Plywood House, Chamkaur Sahib, Ropar. All rights reserved.</span>
+    <span>💳 UPI &nbsp;|&nbsp; Visa &nbsp;|&nbsp; Mastercard &nbsp;|&nbsp; Net Banking &nbsp;|&nbsp; COD</span>
+  </div>
+</footer>
+
+<!-- SIDEBAR -->
+<div class="overlay" id="sbOverlay" onclick="toggleSidebar()"></div>
+<div class="sidebar" id="sidebar">
+  <div class="sbhead"><div style="background:linear-gradient(135deg,#0e2445,#1a3c6e);margin:-22px -20px 14px;padding:18px 20px 16px;border-radius:0;text-align:center"><div style="font-size:32px;margin-bottom:6px">🏗️</div><div style="color:#fff;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:15px;line-height:1.2">Harman Glass &amp; Plywood</div><div style="color:#9ecae4;font-size:11px;margin-top:2px">Chamkaur Sahib</div></div><h2 id="sbWelcome">👤 Welcome, Guest!</h2><p id="sbSubtitle">Login or Sign Up to continue</p><div id="sbAdminBtn" style="display:none;margin-top:10px"><button onclick="openAdmin();toggleSidebar()" style="background:#f5a623;border:none;padding:8px 18px;border-radius:8px;color:#1a3c6e;font-weight:800;font-family:Nunito,sans-serif;cursor:pointer;font-size:13px">🛠️ Admin Panel</button></div></div>
+  <div class="sbsec">
+    <h5>Shop Categories</h5>
+    <div class="sbitem" onclick="filterCat(null,'Glass');toggleSidebar()"><span class="si">🪟</span> Glass Products</div>
+    <div class="sbitem" onclick="filterCat(null,'Plywood');toggleSidebar()"><span class="si">🪵</span> Plywood &amp; Board</div>
+    <div class="sbitem" onclick="filterCat(null,'Doors');toggleSidebar()"><span class="si">🚪</span> Doors &amp; Frames</div>
+    <div class="sbitem" onclick="filterCat(null,'Hardware');toggleSidebar()"><span class="si">⚙️</span> Hardware &amp; Fixtures</div>
+    <div class="sbitem" onclick="filterCat(null,'Laminates');toggleSidebar()"><span class="si">🗃️</span> Laminates &amp; Sheets</div>
+    <div class="sbitem" onclick="filterCat(null,'Adhesives');toggleSidebar()"><span class="si">🧴</span> Adhesives &amp; Bonds</div>
+  </div>
+  <div class="sbsec">
+    <h5>My Account</h5>
+    <div class="sbitem"><span class="si">📦</span> My Orders</div>
+    <div class="sbitem"><span class="si">❤️</span> Wishlist</div>
+    <div class="sbitem"><span class="si">📍</span> Saved Addresses</div>
+    <div class="sbitem"><span class="si">🎁</span> Offers &amp; Coupons</div>
+  </div>
+  <div class="sbsec">
+    <h5>Support</h5>
+    <a href="https://wa.me/919478791010" target="_blank" class="sbitem" style="color:inherit;text-decoration:none"><span class="si">💬</span> WhatsApp: 94787 91010</a>
+    <a href="https://wa.me/919530734010" target="_blank" class="sbitem" style="color:inherit;text-decoration:none"><span class="si">💬</span> WhatsApp: 95307 34010</a>
+    <a href="tel:+919478791010" class="sbitem" style="color:inherit;text-decoration:none"><span class="si">📞</span> Call: 94787 91010</a>
+    <a href="tel:+919530734010" class="sbitem" style="color:inherit;text-decoration:none"><span class="si">📞</span> Call: 95307 34010</a>
+    <a href="https://maps.google.com/?q=Bank+Road+Near+City+Hospital+Chamkaur+Sahib" target="_blank" class="sbitem" style="color:inherit;text-decoration:none"><span class="si">📍</span> Bank Road, Near City Hospital</a>
+    <div class="sbitem"><span class="si">ℹ️</span> About Us</div>
+  </div>
+  <div class="sbsec" id="sbLogoutSection" style="display:none">
+    <button id="sbLogoutBtn" onclick="doLogout();toggleSidebar()" style="width:100%;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;border:none;border-radius:10px;padding:13px 18px;font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;touch-action:manipulation;"><span>🚪</span> Logout</button>
+  </div>
+</div>
+
+
+<!-- LOGIN MODAL -->
+<div class="modal-bg" id="loginModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLogin()">✕</button>
+    <div class="modal-tabs">
+      <button class="mtab act" id="tabLogin" onclick="switchTab('login')">🔐 Login</button>
+      <button class="mtab" id="tabSign" onclick="switchTab('signup')">📝 Sign Up</button>
+    </div>
+    <!-- LOGIN FORM -->
+    <div id="loginForm">
+      <h3 style="margin-bottom:16px;color:#1a3c6e">Welcome Back!</h3>
+      <div class="mfield"><label>Mobile Number</label><input type="tel" id="lPhone" placeholder="Enter your mobile number"></div>
+      <div class="mfield"><label>Password</label><input type="password" id="lPass" placeholder="Enter password"></div>
+      <div id="loginErr" class="merr"></div>
+      <button class="mbtn" onclick="doLogin()">Login →</button>
+      <p style="text-align:center;font-size:12px;color:#888;margin-top:10px">Admin? Use admin credentials to access admin panel.</p>
+    </div>
+    <!-- SIGNUP FORM -->
+    <div id="signupForm" style="display:none">
+      <h3 style="margin-bottom:16px;color:#1a3c6e">Create Account</h3>
+      <div class="mfield"><label>Full Name</label><input type="text" id="sName" placeholder="Your full name"></div>
+      <div class="mfield"><label>Mobile Number</label><input type="tel" id="sPhone" placeholder="10-digit mobile number"></div>
+      <div class="mfield"><label>Password</label><input type="password" id="sPass" placeholder="Create password (min 6 chars)"></div>
+      <div class="mfield"><label>City</label><input type="text" id="sCity" placeholder="Your city"></div>
+      <div id="signupErr" class="merr"></div>
+      <button class="mbtn" onclick="doSignup()">Create Account →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="modal-bg" id="adminPanel">
+  <div class="modal-box admin-box">
+    <button class="modal-close" onclick="closeAdmin()">✕</button>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+      <div style="width:42px;height:42px;background:#1a3c6e;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🛠️</div>
+      <div><h3 style="color:#1a3c6e;font-family:Baloo 2,sans-serif;font-size:1.2rem;margin:0">Admin Control Panel</h3><p style="font-size:11.5px;color:#888;margin:0">Harman Glass &amp; Plywood House</p></div>
+    </div>
+    <!-- STATS ROW -->
+    <div class="stat-grid">
+      <div class="stat-mini"><div class="sv" id="adStat1">22</div><div class="sl">📦 Products</div></div>
+      <div class="stat-mini"><div class="sv" id="adStat2">0</div><div class="sl">👤 Users</div></div>
+      <div class="stat-mini"><div class="sv" id="adStat3">0</div><div class="sl">🔐 Logins Today</div></div>
+      <div class="stat-mini"><div class="sv" id="adStat4">0</div><div class="sl">📩 Enquiries</div></div>
+    </div>
+    <!-- TABS -->
+    <div class="adm-tab-bar">
+      <button class="adm-tab on" onclick="admTab('products')">📦 Products</button>
+      <button class="adm-tab" onclick="admTab('addprod')">➕ Add Product</button>
+      <button class="adm-tab" onclick="admTab('users')">👥 Users & History</button>
+      <button class="adm-tab" onclick="admTab('enquiries')">📩 Enquiries</button>
+      <button class="adm-tab" onclick="admTab('settings')">⚙️ Settings</button>
+    </div>
+
+    <!-- TAB: PRODUCTS LIST -->
+    <div class="adm-pane on" id="apane-products">
+      <div class="admin-section">
+        <h4>📦 All Products <span id="adminProdCount" style="color:#888;font-weight:400;font-size:13px"></span></h4>
+        <div class="admin-search-row">
+          <input type="text" id="adminSearch" placeholder="🔍 Search products..." oninput="renderAdminTable()">
+          <select id="adminFilterCat" onchange="renderAdminTable()">
+            <option value="">All Categories</option>
+            <option>Glass</option><option>Plywood</option><option>Doors</option>
+            <option>Hardware</option><option>Laminates</option><option>Adhesives</option>
+          </select>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>#</th><th>Image</th><th>Name</th><th>Brand</th><th>Category</th><th>Price</th><th>MRP</th><th>Actions</th></tr></thead>
+            <tbody id="adminTbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: ADD PRODUCT -->
+    <div class="adm-pane" id="apane-addprod">
+      <div class="admin-section">
+        <h4>➕ Add New Product</h4>
+        <div class="admin-row">
+          <input type="text" id="apName" placeholder="Product name *">
+          <input type="text" id="apBrand" placeholder="Brand name *">
+          <select id="apCat">
+            <option value="">Category *</option>
+            <option>Glass</option><option>Plywood</option><option>Doors</option>
+            <option>Hardware</option><option>Laminates</option><option>Adhesives</option>
+          </select>
+        </div>
+        <div class="admin-row">
+          <input type="number" id="apPrice" placeholder="Selling Price (₹) *">
+          <input type="number" id="apOld" placeholder="MRP / Original Price (₹)">
+          <input type="text" id="apDesc" placeholder="Short product description">
+        </div>
+        <!-- IMAGE UPLOAD -->
+        <div style="margin:12px 0">
+          <label style="font-size:12.5px;font-weight:700;color:#374151;display:block;margin-bottom:8px">📷 Product Image (optional)</label>
+          <div class="img-upload-box" onclick="document.getElementById('apImgFile').click()">
+            <input type="file" id="apImgFile" accept="image/*" onchange="previewImg(this,'apImgPreview','apImgB64')">
+            <div id="apImgPlaceholder"><div style="font-size:32px">📷</div><div style="font-size:13px;color:#888;margin-top:6px">Click to upload product image<br><span style="font-size:11px">JPG, PNG supported • Max 2MB</span></div></div>
+            <img id="apImgPreview" class="img-preview" alt="Preview">
+          </div>
+          <input type="hidden" id="apImgB64">
+        </div>
+        <button class="admin-btn add-btn" onclick="adminAddProduct()" style="margin-top:8px">➕ Add Product</button>
+      </div>
+    </div>
+
+    <!-- TAB: USERS & HISTORY -->
+    <div class="adm-pane" id="apane-users">
+      <div class="admin-section">
+        <h4>👥 Registered Users</h4>
+        <div class="admin-table-wrap">
+          <table class="hist-table" id="usersTable">
+            <thead><tr><th>#</th><th>Name</th><th>Mobile</th><th>City</th><th>Joined</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody id="usersTbody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="admin-section" style="margin-top:0">
+        <h4>🔐 Login History (All Sessions)</h4>
+        <div style="display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap">
+          <input type="text" id="histSearch" placeholder="Search by name or mobile..." style="flex:1;padding:8px 12px;border:1.5px solid #dde3ef;border-radius:8px;font-size:13px;font-family:Nunito,sans-serif;outline:none" oninput="renderHistTable()">
+          <button onclick="clearHistory()" style="padding:8px 16px;background:#fee2e2;color:#dc2626;border:none;border-radius:8px;font-size:12.5px;font-weight:700;font-family:Nunito,sans-serif;cursor:pointer">🗑️ Clear History</button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="hist-table">
+            <thead><tr><th>#</th><th>Name</th><th>Mobile</th><th>Login Time</th><th>City</th><th>Device</th></tr></thead>
+            <tbody id="histTbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: ENQUIRIES -->
+    <div class="adm-pane" id="apane-enquiries">
+      <div class="admin-section">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h4 style="margin:0">📩 Customer Enquiries</h4>
+          <button onclick="clearEnquiries()" style="padding:6px 14px;background:#fee2e2;color:#dc2626;border:none;border-radius:8px;font-size:12px;font-weight:700;font-family:Nunito,sans-serif;cursor:pointer">🗑️ Clear All</button>
+        </div>
+        <div id="enqListAdmin" style="max-height:400px;overflow-y:auto"></div>
+      </div>
+    </div>
+
+    <!-- TAB: SETTINGS -->
+    <div class="adm-pane" id="apane-settings">
+      <div class="admin-section">
+        <h4>⚙️ Shop Settings</h4>
+        <div class="admin-row">
+          <div><label style="font-size:12px;font-weight:700;color:#555;display:block;margin-bottom:5px">Shop Name</label><input type="text" id="setName" value="Harman Glass &amp; Plywood House"></div>
+          <div><label style="font-size:12px;font-weight:700;color:#555;display:block;margin-bottom:5px">WhatsApp Number</label><input type="tel" id="setWA" value="919478791010"></div>
+          <div><label style="font-size:12px;font-weight:700;color:#555;display:block;margin-bottom:5px">Second Number</label><input type="tel" id="setWA2" value="919530734010"></div>
+        </div>
+        <div class="admin-row" style="margin-top:10px">
+          <div><label style="font-size:12px;font-weight:700;color:#555;display:block;margin-bottom:5px">Address</label><input type="text" id="setAddr" value="Bank Road, Near City Hospital, Chamkaur Sahib"></div>
+          <div><label style="font-size:12px;font-weight:700;color:#555;display:block;margin-bottom:5px">Flash Sale Text</label><input type="text" id="setFlash" value="⚡ Flash Sale — Upto 45% OFF on Hardware!"></div>
+        </div>
+        <button class="admin-btn add-btn" onclick="saveSettings()" style="margin-top:10px">💾 Save Settings</button>
+      </div>
+      <div class="admin-section" style="margin-top:0">
+        <h4>🔑 Change Admin Password</h4>
+        <div class="admin-row">
+          <div><label style="font-size:12px;font-weight:700;color:#555;display:block;margin-bottom:5px">Current Password</label><input type="password" id="setPOld" placeholder="Current password"></div>
+          <div><label style="font-size:12px;font-weight:700;color:#555;display:block;margin-bottom:5px">New Password</label><input type="password" id="setPNew" placeholder="New password (min 6 chars)"></div>
+          <div><label style="font-size:12px;font-weight:700;color:#555;display:block;margin-bottom:5px">Confirm New</label><input type="password" id="setPConf" placeholder="Re-enter new password"></div>
+        </div>
+        <button class="admin-btn" onclick="changeAdminPass()" style="background:#1a3c6e;color:#fff;margin-top:10px">🔑 Update Password</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT PRODUCT MODAL -->
+<div class="modal-bg" id="editModal" style="z-index:3100">
+  <div class="modal-box" style="max-width:440px">
+    <button class="modal-close" onclick="document.getElementById('editModal').classList.remove('show')">✕</button>
+    <h3 style="color:#1a3c6e;margin-bottom:16px;font-family:Baloo 2,sans-serif">✏️ Edit Product</h3>
+    <input type="hidden" id="editId">
+    <div class="mfield"><label>Product Name</label><input type="text" id="editName"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="mfield"><label>Price (₹)</label><input type="number" id="editPrice"></div>
+      <div class="mfield"><label>MRP (₹)</label><input type="number" id="editOld"></div>
+    </div>
+    <div class="mfield"><label>Description</label><input type="text" id="editDesc"></div>
+    <div style="margin:12px 0">
+      <label style="font-size:12.5px;font-weight:700;color:#374151;display:block;margin-bottom:8px">📷 Change Product Image</label>
+      <div class="img-upload-box" onclick="document.getElementById('editImgFile').click()">
+        <input type="file" id="editImgFile" accept="image/*" onchange="previewImg(this,'editImgPreview','editImgB64')">
+        <div id="editImgPlaceholder" style="font-size:12px;color:#888;padding:8px">Click to change image (optional)</div>
+        <img id="editImgPreview" class="img-preview" alt="Preview">
+      </div>
+      <input type="hidden" id="editImgB64">
+    </div>
+    <button class="mbtn" onclick="saveEdit()">💾 Save Changes</button>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="cartOverlay" onclick="toggleCart()" style="z-index:1500;"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cdhead">
+    <h3>🛒 My Cart (<span id="cartCount">0</span>)</h3>
+    <button class="cdclose" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cditems" id="cartItems">
+    <div class="cdempty"><div class="ce">🛒</div><p>Your cart is empty!<br>Add some products.</p></div>
+  </div>
+  <div class="cdfoot" id="cartFoot" style="display:none">
+    <div class="cdtotal"><span>Total Amount</span><span id="cartTotal">₹0</span></div>
+    <button class="bchk" onclick="checkoutCart()">✅ Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-nav">
+  <ul>
+    <li class="act"><span class="mico">🏠</span>Home</li>
+    <li onclick="toggleSidebar()"><span class="mico">📂</span>Categories</li>
+    <li><span class="mico">🔍</span>Search</li>
+    <li onclick="toggleCart()">
+      <span class="mico">🛒</span>Cart
+      <span class="mnb" id="mCartBadge">0</span>
+    </li>
+    <li><span class="mico">👤</span>Account</li>
+  </ul>
+</nav>
+
+<!-- LOGIN WALL (for cart/buy protection) -->
+<div id="loginWall">
+  <div class="lw-box">
+    <div style="font-size:48px;margin-bottom:12px">🔐</div>
+    <h2>Login Required</h2>
+    <p>Please login or create a free account to add items to cart and buy products from Harman Glass & Plywood House.</p>
+    <div class="lw-btns">
+      <button class="lw-btn lw-login" onclick="document.getElementById('loginWall').classList.remove('show');openLogin()">Login / Sign Up</button>
+      <button class="lw-btn lw-skip" onclick="document.getElementById('loginWall').classList.remove('show')">Browse Only</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Added to Cart!</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ═══ SVG PRODUCT IMAGES ═══ */
+const SVG_IMAGES = {
+  // GLASS — clear blue panel with reflection
+  1:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1a" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e3f2fd"/><stop offset="100%" stop-color="#90caf9"/></linearGradient><linearGradient id="g1b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,0.6)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></linearGradient></defs><rect width="200" height="185" fill="url(#g1a)"/><rect x="35" y="22" width="130" height="141" rx="4" fill="rgba(255,255,255,0.22)" stroke="#90caf9" stroke-width="2.5"/><rect x="35" y="22" width="130" height="141" rx="4" fill="url(#g1b)"/><rect x="44" y="30" width="30" height="125" rx="2" fill="rgba(255,255,255,0.35)"/><line x1="35" y1="92.5" x2="165" y2="92.5" stroke="#90caf9" stroke-width="1.5" stroke-dasharray="5,5"/><text x="100" y="178" text-anchor="middle" font-size="9" fill="#1565c0" font-weight="700" font-family="sans-serif">CLEAR FLOAT GLASS 6mm</text></svg>`,
+  // GLASS — toughened with shield
+  2:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#bbdefb"/><stop offset="100%" stop-color="#42a5f5"/></linearGradient></defs><rect width="200" height="185" fill="url(#g2)"/><rect x="32" y="18" width="136" height="149" rx="5" fill="rgba(255,255,255,0.18)" stroke="#1e88e5" stroke-width="2"/><rect x="32" y="18" width="50" height="149" rx="5" fill="rgba(255,255,255,0.28)"/><path d="M100 45 L125 60 L125 95 Q125 118 100 130 Q75 118 75 95 L75 60 Z" fill="rgba(255,255,255,0.4)" stroke="#1565c0" stroke-width="2.5"/><path d="M90 87 L97 95 L112 78" stroke="#1565c0" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="100" y="150" text-anchor="middle" font-size="9" fill="#0d47a1" font-weight="700" font-family="sans-serif">TOUGHENED SAFETY 8mm</text></svg>`,
+  // GLASS — frosted
+  3:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e1f5fe"/><stop offset="100%" stop-color="#b3e5fc"/></linearGradient></defs><rect width="200" height="185" fill="url(#g3)"/><rect x="30" y="15" width="140" height="155" rx="5" fill="rgba(255,255,255,0.45)" stroke="#81d4fa" stroke-width="2"/><g opacity="0.35"><circle cx="70" cy="55" r="18" fill="white"/><circle cx="120" cy="75" r="12" fill="white"/><circle cx="90" cy="105" r="22" fill="white"/><circle cx="140" cy="115" r="15" fill="white"/><circle cx="65" cy="130" r="10" fill="white"/></g><text x="100" y="178" text-anchor="middle" font-size="9" fill="#0277bd" font-weight="700" font-family="sans-serif">FROSTED GLASS FILM</text></svg>`,
+  // GLASS — mirror
+  4:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#eceff1"/><stop offset="100%" stop-color="#b0bec5"/></linearGradient><linearGradient id="g4r" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,0.9)"/><stop offset="60%" stop-color="rgba(200,220,240,0.5)"/><stop offset="100%" stop-color="rgba(150,180,210,0.3)"/></linearGradient></defs><rect width="200" height="185" fill="url(#g4)"/><rect x="28" y="14" width="144" height="157" rx="6" fill="#cfd8dc" stroke="#78909c" stroke-width="3"/><rect x="34" y="20" width="132" height="145" rx="3" fill="url(#g4r)"/><rect x="34" y="20" width="40" height="145" rx="3" fill="rgba(255,255,255,0.5)"/><ellipse cx="100" cy="92" rx="30" ry="35" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="4,4"/><text x="100" y="178" text-anchor="middle" font-size="9" fill="#37474f" font-weight="700" font-family="sans-serif">MIRROR GLASS 4mm</text></svg>`,
+  // PLYWOOD — BWP stacked sheets
+  5:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff8e1"/><stop offset="100%" stop-color="#ffcc02"/></linearGradient></defs><rect width="200" height="185" fill="#fdf3e3"/><g transform="translate(25,15)"><rect x="0" y="90" width="150" height="14" rx="2" fill="#c8860a"/><rect x="0" y="76" width="150" height="14" rx="2" fill="#d4a027"/><rect x="0" y="62" width="150" height="14" rx="2" fill="#c8860a"/><rect x="0" y="48" width="150" height="14" rx="2" fill="#d4a027"/><rect x="0" y="34" width="150" height="14" rx="2" fill="#c8860a"/><rect x="0" y="20" width="150" height="14" rx="2" fill="#d4a027"/><rect x="0" y="6" width="150" height="14" rx="2" fill="#c8860a"/><rect x="0" y="6" width="8" height="98" fill="#a0620a"/><rect x="142" y="6" width="8" height="98" fill="#a0620a"/></g><rect x="25" y="120" width="150" height="8" rx="2" fill="#e67e22"/><text x="100" y="145" text-anchor="middle" font-size="9.5" fill="#7f4e00" font-weight="800" font-family="sans-serif">BWP PLYWOOD 18mm</text><text x="100" y="158" text-anchor="middle" font-size="8.5" fill="#a0620a" font-family="sans-serif">ISI CERTIFIED • 8×4 ft</text></svg>`,
+  // PLYWOOD — MR Grade
+  6:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="185" fill="#f9f0e0"/><g transform="translate(22,12)"><rect x="0" y="80" width="156" height="12" rx="1" fill="#8b6914"/><rect x="0" y="68" width="156" height="12" rx="1" fill="#a07820"/><rect x="0" y="56" width="156" height="12" rx="1" fill="#8b6914"/><rect x="0" y="44" width="156" height="12" rx="1" fill="#a07820"/><rect x="0" y="32" width="156" height="12" rx="1" fill="#8b6914"/><rect x="0" y="20" width="156" height="12" rx="1" fill="#a07820"/><rect x="0" y="8" width="156" height="12" rx="1" fill="#8b6914"/></g><rect x="22" y="103" width="156" height="7" rx="2" fill="#7f5c0f"/><rect x="25" y="118" width="50" height="26" rx="4" fill="#27ae60"/><text x="50" y="128" text-anchor="middle" font-size="7.5" fill="white" font-weight="800" font-family="sans-serif">GREEN</text><text x="50" y="138" text-anchor="middle" font-size="7" fill="white" font-family="sans-serif">PLY</text><text x="115" y="128" text-anchor="middle" font-size="9" fill="#5d4000" font-weight="700" font-family="sans-serif">MR Grade 12mm</text><text x="115" y="140" text-anchor="middle" font-size="8" fill="#7f5c0f" font-family="sans-serif">8×4 ft</text></svg>`,
+  // PLYWOOD — Phenol
+  7:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="185" fill="#f5ebe0"/><g transform="translate(20,10)"><rect x="0" y="85" width="160" height="13" rx="1" fill="#5d3a1a"/><rect x="0" y="72" width="160" height="13" rx="1" fill="#6e4520"/><rect x="0" y="59" width="160" height="13" rx="1" fill="#5d3a1a"/><rect x="0" y="46" width="160" height="13" rx="1" fill="#6e4520"/><rect x="0" y="33" width="160" height="13" rx="1" fill="#5d3a1a"/><rect x="0" y="20" width="160" height="13" rx="1" fill="#6e4520"/><rect x="0" y="7" width="160" height="13" rx="1" fill="#5d3a1a"/></g><rect x="20" y="108" width="160" height="7" rx="2" fill="#4a2c10"/><text x="100" y="132" text-anchor="middle" font-size="9.5" fill="#4a2c10" font-weight="800" font-family="sans-serif">PHENOL PLYWOOD 12mm</text><text x="100" y="145" text-anchor="middle" font-size="8.5" fill="#7a4f20" font-family="sans-serif">High Density • Exterior Grade</text></svg>`,
+  // PLYWOOD — MDF
+  8:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="185" fill="#faf0e6"/><rect x="22" y="30" width="156" height="110" rx="4" fill="#c8a96e"/><rect x="22" y="30" width="156" height="8" rx="4" fill="#e0c080"/><rect x="22" y="132" width="156" height="8" rx="0" fill="#e0c080"/><rect x="22" y="38" width="156" height="94" fill="#d4b87a"/><line x1="22" y1="60" x2="178" y2="60" stroke="#c09850" stroke-width="0.8"/><line x1="22" y1="80" x2="178" y2="80" stroke="#c09850" stroke-width="0.8"/><line x1="22" y1="100" x2="178" y2="100" stroke="#c09850" stroke-width="0.8"/><line x1="22" y1="120" x2="178" y2="120" stroke="#c09850" stroke-width="0.8"/><text x="100" y="157" text-anchor="middle" font-size="9.5" fill="#6b4c1a" font-weight="800" font-family="sans-serif">MDF BOARD 18mm</text><text x="100" y="170" text-anchor="middle" font-size="8.5" fill="#8b6020" font-family="sans-serif">8×4 ft • Action Tesa</text></svg>`,
+  // DOORS — teak wood flush
+  9:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="d9" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#8d5524"/><stop offset="40%" stop-color="#a0631a"/><stop offset="100%" stop-color="#6b3f10"/></linearGradient></defs><rect width="200" height="185" fill="#f5e6d0"/><rect x="40" y="5" width="120" height="175" rx="3" fill="url(#d9)"/><line x1="52" y1="15" x2="52" y2="172" stroke="#7a4510" stroke-width="1.2" opacity="0.6"/><line x1="64" y1="15" x2="64" y2="172" stroke="#c0843a" stroke-width="0.8" opacity="0.4"/><line x1="148" y1="15" x2="148" y2="172" stroke="#7a4510" stroke-width="1.2" opacity="0.6"/><rect x="48" y="12" width="104" height="60" rx="2" fill="rgba(0,0,0,0.08)" stroke="#5c3210" stroke-width="1.5"/><rect x="48" y="80" width="104" height="60" rx="2" fill="rgba(0,0,0,0.08)" stroke="#5c3210" stroke-width="1.5"/><rect x="48" y="148" width="104" height="24" rx="2" fill="rgba(0,0,0,0.08)" stroke="#5c3210" stroke-width="1.5"/><rect x="143" y="88" width="10" height="20" rx="5" fill="#d4af37"/><circle cx="143" cy="93" r="3" fill="#b8960f"/></svg>`,
+  // DOORS — PVC
+  10:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="d10" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#e8e8e8"/><stop offset="50%" stop-color="#f5f5f5"/><stop offset="100%" stop-color="#d5d5d5"/></linearGradient></defs><rect width="200" height="185" fill="#eef2f7"/><rect x="38" y="4" width="124" height="177" rx="3" fill="url(#d10)"/><rect x="38" y="4" width="124" height="177" rx="3" fill="none" stroke="#bbb" stroke-width="2.5"/><rect x="46" y="12" width="108" height="77" rx="3" fill="rgba(100,150,200,0.12)" stroke="#ccc" stroke-width="1.5"/><rect x="46" y="96" width="108" height="77" rx="3" fill="rgba(100,150,200,0.12)" stroke="#ccc" stroke-width="1.5"/><line x1="46" y1="12" x2="154" y2="89" stroke="rgba(200,200,200,0.5)" stroke-width="1"/><line x1="154" y1="12" x2="46" y2="89" stroke="rgba(200,200,200,0.5)" stroke-width="1"/><rect x="148" y="89" width="9" height="18" rx="4" fill="#888"/><circle cx="148" cy="94" r="2.5" fill="#555"/><text x="100" y="181" text-anchor="middle" font-size="8" fill="#555" font-weight="700" font-family="sans-serif">PVC DOOR</text></svg>`,
+  // DOORS — Membrane designer
+  11:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="d11a" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fce4ec"/><stop offset="100%" stop-color="#f8bbd0"/></linearGradient></defs><rect width="200" height="185" fill="#f3e5f5"/><rect x="38" y="4" width="124" height="177" rx="4" fill="#fff"/><rect x="38" y="4" width="124" height="177" rx="4" fill="none" stroke="#ce93d8" stroke-width="2.5"/><rect x="46" y="12" width="108" height="55" rx="3" fill="url(#d11a)" stroke="#e91e63" stroke-width="1"/><rect x="46" y="73" width="108" height="55" rx="3" fill="url(#d11a)" stroke="#e91e63" stroke-width="1"/><rect x="46" y="134" width="108" height="38" rx="3" fill="url(#d11a)" stroke="#e91e63" stroke-width="1"/><g transform="translate(50,20)"><path d="M0 20 Q50 0 100 20 Q50 40 0 20" fill="rgba(233,30,99,0.15)"/></g><rect x="148" y="89" width="9" height="18" rx="4" fill="#9c27b0"/><text x="100" y="181" text-anchor="middle" font-size="8" fill="#7b1fa2" font-weight="700" font-family="sans-serif">MEMBRANE DESIGNER DOOR</text></svg>`,
+  // HARDWARE — Mortise Lock
+  12:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="185" fill="#eceff1"/><rect x="65" y="20" width="70" height="130" rx="5" fill="#78909c" stroke="#546e7a" stroke-width="2.5"/><rect x="65" y="20" width="70" height="130" rx="5" fill="linear-gradient(#90a4ae,#546e7a)"/><rect x="72" y="55" width="56" height="60" rx="3" fill="#546e7a"/><circle cx="100" cy="85" r="16" fill="#b0bec5" stroke="#78909c" stroke-width="2.5"/><circle cx="100" cy="85" r="10" fill="#90a4ae"/><circle cx="100" cy="85" r="4" fill="#546e7a"/><rect x="82" y="30" width="36" height="16" rx="2" fill="#546e7a"/><path d="M125 80 L145 80 L145 92 Q145 98 140 98 L125 98 Z" fill="#d4af37" stroke="#b8960f" stroke-width="1.5"/><text x="100" y="168" text-anchor="middle" font-size="8.5" fill="#263238" font-weight="800" font-family="sans-serif">GODREJ MORTISE LOCK</text></svg>`,
+  // HARDWARE — Handle
+  13:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="185" fill="#f5f5f5"/><defs><linearGradient id="h13" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eeeeee"/><stop offset="50%" stop-color="#bdbdbd"/><stop offset="100%" stop-color="#9e9e9e"/></linearGradient></defs><rect x="80" y="15" width="40" height="12" rx="6" fill="url(#h13)" stroke="#757575" stroke-width="1.5"/><rect x="80" y="155" width="40" height="12" rx="6" fill="url(#h13)" stroke="#757575" stroke-width="1.5"/><rect x="88" y="27" width="24" height="131" rx="12" fill="url(#h13)" stroke="#757575" stroke-width="1.5"/><rect x="90" y="30" width="6" height="127" rx="3" fill="rgba(255,255,255,0.5)"/><circle cx="100" cy="92" r="8" fill="#e0e0e0" stroke="#9e9e9e" stroke-width="1.5"/><circle cx="100" cy="92" r="4" fill="#bdbdbd"/><text x="100" y="179" text-anchor="middle" font-size="8.5" fill="#424242" font-weight="700" font-family="sans-serif">SS DOOR HANDLE</text></svg>`,
+  // HARDWARE — Hinge
+  14:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="185" fill="#f0f4f8"/><defs><linearGradient id="h14" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#cfd8dc"/><stop offset="50%" stop-color="#eceff1"/><stop offset="100%" stop-color="#b0bec5"/></linearGradient></defs><rect x="45" y="25" width="110" height="135" rx="6" fill="url(#h14)" stroke="#90a4ae" stroke-width="2"/><rect x="45" y="25" width="52" height="135" rx="0" fill="rgba(0,0,0,0.04)"/><circle cx="100" cy="92" r="15" fill="#eceff1" stroke="#78909c" stroke-width="3"/><circle cx="100" cy="92" r="7" fill="#b0bec5" stroke="#90a4ae" stroke-width="2"/><circle cx="63" cy="45" r="6" fill="#607d8b" stroke="#546e7a" stroke-width="1.5"/><circle cx="63" cy="90" r="6" fill="#607d8b" stroke="#546e7a" stroke-width="1.5"/><circle cx="63" cy="140" r="6" fill="#607d8b" stroke="#546e7a" stroke-width="1.5"/><circle cx="137" cy="45" r="6" fill="#607d8b" stroke="#546e7a" stroke-width="1.5"/><circle cx="137" cy="90" r="6" fill="#607d8b" stroke="#546e7a" stroke-width="1.5"/><circle cx="137" cy="140" r="6" fill="#607d8b" stroke="#546e7a" stroke-width="1.5"/><text x="100" y="174" text-anchor="middle" font-size="8.5" fill="#37474f" font-weight="700" font-family="sans-serif">DOOR HINGE PAIR</text></svg>`,
+  // HARDWARE — Cabinet Knob
+  15:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="185" fill="#fdf8f0"/><defs><radialGradient id="h15" cx="35%" cy="30%"><stop offset="0%" stop-color="#f0d9b0"/><stop offset="50%" stop-color="#c8860a"/><stop offset="100%" stop-color="#7f4e00"/></radialGradient></defs><circle cx="100" cy="82" r="52" fill="url(#h15)"/><circle cx="100" cy="82" r="52" fill="none" stroke="#8d5524" stroke-width="3"/><circle cx="85" cy="65" r="14" fill="rgba(255,255,255,0.25)"/><ellipse cx="100" cy="82" rx="12" ry="5" fill="#7f4e00"/><rect x="94" y="132" width="12" height="22" rx="3" fill="#9e6b2a"/><circle cx="100" cy="150" r="5" fill="#7f4e00"/><text x="100" y="172" text-anchor="middle" font-size="8.5" fill="#5d3a1a" font-weight="700" font-family="sans-serif">WOODEN CABINET KNOB</text></svg>`,
+  // LAMINATES — Merino sheet stack
+  16:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="185" fill="#faf5ff"/><g transform="translate(20,10)"><rect x="10" y="100" width="150" height="12" rx="1" fill="#7b1fa2"/><rect x="6" y="88" width="150" height="12" rx="1" fill="#9c27b0"/><rect x="2" y="76" width="150" height="12" rx="1" fill="#ab47bc"/><rect x="0" y="64" width="150" height="12" rx="1" fill="#ce93d8"/><rect x="0" y="52" width="150" height="12" rx="1" fill="#e1bee7"/><rect x="0" y="40" width="150" height="12" rx="1" fill="#f3e5f5"/><rect x="0" y="28" width="150" height="12" rx="1" fill="#fce4ec"/></g><rect x="20" y="125" width="150" height="6" rx="1" fill="#6a0080"/><text x="100" y="148" text-anchor="middle" font-size="10" fill="#6a0080" font-weight="800" font-family="sans-serif">MERINO LAMINATE</text><text x="100" y="162" text-anchor="middle" font-size="8.5" fill="#8e24aa" font-family="sans-serif">1mm Decorative Sheet</text></svg>`,
+  // LAMINATES — high gloss
+  17:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="l17" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f8f8f8"/><stop offset="30%" stop-color="#e0e0e0"/><stop offset="60%" stop-color="#bdbdbd"/><stop offset="100%" stop-color="#9e9e9e"/></linearGradient><linearGradient id="l17s" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,0.9)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></linearGradient></defs><rect width="200" height="185" fill="#eceff1"/><rect x="22" y="18" width="156" height="135" rx="4" fill="url(#l17)"/><rect x="22" y="18" width="156" height="135" rx="4" fill="url(#l17s)"/><rect x="22" y="18" width="60" height="135" rx="4" fill="rgba(255,255,255,0.3)"/><rect x="22" y="18" width="156" height="135" rx="4" fill="none" stroke="#78909c" stroke-width="2"/><text x="100" y="168" text-anchor="middle" font-size="9.5" fill="#37474f" font-weight="800" font-family="sans-serif">HIGH GLOSS ACRYLIC</text><text x="100" y="180" text-anchor="middle" font-size="8" fill="#607d8b" font-family="sans-serif">Premium Laminate Sheet</text></svg>`,
+  // LAMINATES — Kitply decorative
+  18:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="185" fill="#fff8e1"/><defs><pattern id="woodpat" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#d4a520"/><line x1="0" y1="5" x2="20" y2="7" stroke="#c8960a" stroke-width="0.5" opacity="0.5"/><line x1="0" y1="12" x2="20" y2="15" stroke="#c8960a" stroke-width="0.5" opacity="0.5"/></pattern></defs><rect x="22" y="18" width="156" height="135" rx="4" fill="url(#woodpat)"/><rect x="22" y="18" width="156" height="8" rx="4" fill="#e8c030"/><rect x="22" y="145" width="156" height="8" rx="2" fill="#e8c030"/><text x="100" y="168" text-anchor="middle" font-size="9.5" fill="#7f5000" font-weight="800" font-family="sans-serif">KITPLY DECORATIVE</text><text x="100" y="180" text-anchor="middle" font-size="8" fill="#a07020" font-family="sans-serif">Laminate 1mm</text></svg>`,
+  // ADHESIVES — Fevicol Marine
+  19:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="185" fill="#e8f5e9"/><rect x="72" y="8" width="56" height="10" rx="5" fill="#1b5e20"/><rect x="68" y="18" width="64" height="130" rx="8" fill="#2e7d32"/><rect x="68" y="18" width="64" height="130" rx="8" fill="none" stroke="#1b5e20" stroke-width="2.5"/><rect x="72" y="30" width="56" height="60" rx="4" fill="white"/><text x="100" y="55" text-anchor="middle" font-size="9" fill="#1b5e20" font-weight="900" font-family="sans-serif">FEVICOL</text><text x="100" y="67" text-anchor="middle" font-size="7.5" fill="#2e7d32" font-weight="800" font-family="sans-serif">MARINE</text><circle cx="100" cy="80" r="10" fill="#1b5e20" opacity="0.15"/><rect x="74" y="96" width="52" height="42" rx="3" fill="#e8f5e9"/><text x="100" y="112" text-anchor="middle" font-size="7" fill="#2e7d32" font-weight="700" font-family="sans-serif">WATERPROOF</text><text x="100" y="123" text-anchor="middle" font-size="7" fill="#388e3c" font-family="sans-serif">Wood Adhesive</text><text x="100" y="133" text-anchor="middle" font-size="9" fill="#1b5e20" font-weight="800" font-family="sans-serif">5 Kg</text><rect x="82" y="148" width="36" height="9" rx="4.5" fill="#1b5e20"/><text x="100" y="175" text-anchor="middle" font-size="9" fill="#1b5e20" font-weight="800" font-family="sans-serif">FEVICOL MARINE</text></svg>`,
+  // ADHESIVES — Heatax
+  20:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="185" fill="#fff3e0"/><rect x="72" y="8" width="56" height="10" rx="5" fill="#bf360c"/><rect x="68" y="18" width="64" height="130" rx="8" fill="#e64a19"/><rect x="68" y="18" width="64" height="130" rx="8" fill="none" stroke="#bf360c" stroke-width="2.5"/><rect x="72" y="30" width="56" height="60" rx="4" fill="white"/><text x="100" y="55" text-anchor="middle" font-size="10" fill="#bf360c" font-weight="900" font-family="sans-serif">HEATAX</text><path d="M88 65 Q100 55 112 65 Q100 75 88 65Z" fill="#ff6d00" opacity="0.6"/><rect x="74" y="96" width="52" height="42" rx="3" fill="#fff3e0"/><text x="100" y="112" text-anchor="middle" font-size="7" fill="#bf360c" font-weight="700" font-family="sans-serif">HEAT RESISTANT</text><text x="100" y="123" text-anchor="middle" font-size="7" fill="#d84315" font-family="sans-serif">High Strength</text><text x="100" y="133" text-anchor="middle" font-size="9" fill="#bf360c" font-weight="800" font-family="sans-serif">5 Kg</text><rect x="82" y="148" width="36" height="9" rx="4.5" fill="#bf360c"/><text x="100" y="175" text-anchor="middle" font-size="9" fill="#bf360c" font-weight="800" font-family="sans-serif">HEATAX ADHESIVE</text></svg>`,
+  // ADHESIVES — Probond
+  21:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="185" fill="#e3f2fd"/><rect x="72" y="8" width="56" height="10" rx="5" fill="#0d47a1"/><rect x="68" y="18" width="64" height="130" rx="8" fill="#1565c0"/><rect x="68" y="18" width="64" height="130" rx="8" fill="none" stroke="#0d47a1" stroke-width="2.5"/><rect x="72" y="30" width="56" height="60" rx="4" fill="white"/><text x="100" y="52" text-anchor="middle" font-size="8.5" fill="#0d47a1" font-weight="900" font-family="sans-serif">PRO</text><text x="100" y="64" text-anchor="middle" font-size="8.5" fill="#1565c0" font-weight="900" font-family="sans-serif">BOND</text><rect x="74" y="96" width="52" height="42" rx="3" fill="#e3f2fd"/><text x="100" y="112" text-anchor="middle" font-size="7" fill="#0d47a1" font-weight="700" font-family="sans-serif">PREMIUM CONTACT</text><text x="100" y="123" text-anchor="middle" font-size="7" fill="#1565c0" font-family="sans-serif">For Laminates</text><text x="100" y="133" text-anchor="middle" font-size="9" fill="#0d47a1" font-weight="800" font-family="sans-serif">5 Kg</text><rect x="82" y="148" width="36" height="9" rx="4.5" fill="#0d47a1"/><text x="100" y="175" text-anchor="middle" font-size="9" fill="#0d47a1" font-weight="800" font-family="sans-serif">PROBOND</text></svg>`,
+  // ADHESIVES — Today Bond
+  22:`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="185" fill="#f3e5f5"/><rect x="72" y="8" width="56" height="10" rx="5" fill="#4a148c"/><rect x="68" y="18" width="64" height="130" rx="8" fill="#6a1b9a"/><rect x="68" y="18" width="64" height="130" rx="8" fill="none" stroke="#4a148c" stroke-width="2.5"/><rect x="72" y="30" width="56" height="60" rx="4" fill="white"/><text x="100" y="52" text-anchor="middle" font-size="8" fill="#4a148c" font-weight="900" font-family="sans-serif">TODAY</text><text x="100" y="64" text-anchor="middle" font-size="8" fill="#6a1b9a" font-weight="900" font-family="sans-serif">BOND</text><rect x="74" y="96" width="52" height="42" rx="3" fill="#f3e5f5"/><text x="100" y="112" text-anchor="middle" font-size="7" fill="#4a148c" font-weight="700" font-family="sans-serif">ALL PURPOSE</text><text x="100" y="123" text-anchor="middle" font-size="7" fill="#7b1fa2" font-family="sans-serif">Wood Bonding</text><text x="100" y="133" text-anchor="middle" font-size="9" fill="#4a148c" font-weight="800" font-family="sans-serif">5 Kg</text><rect x="82" y="148" width="36" height="9" rx="4.5" fill="#4a148c"/><text x="100" y="175" text-anchor="middle" font-size="9" fill="#4a148c" font-weight="800" font-family="sans-serif">TODAY BOND</text></svg>`,
+};
+
+const allProducts=[
+  {id:1,cat:"Glass",name:"Saint-Gobain Clear Float Glass 6mm",brand:"Saint-Gobain",price:2800,old:3500,off:20,r:4.5,rv:128,badge:"SALE",bc:"sale",desc:"Premium clear glass for windows & partitions"},
+  {id:2,cat:"Glass",name:"Toughened Safety Glass 8mm (Per sqft)",brand:"Asahi India",price:180,old:230,off:22,r:4.6,rv:87,badge:"SALE",bc:"sale",desc:"High-strength tempered safety glass"},
+  {id:3,cat:"Glass",name:"Frosted Privacy Glass Film (Per sqft)",brand:"3M",price:95,old:120,off:21,r:4.3,rv:44,badge:"NEW",bc:"new",desc:"Frosted film for doors & bathroom"},
+  {id:4,cat:"Glass",name:"Mirror Glass 4mm (Per sqft)",brand:"Saint-Gobain",price:140,old:180,off:22,r:4.7,rv:55,badge:"",bc:"",desc:"High-clarity reflective mirror glass"},
+  {id:5,cat:"Plywood",name:"Century BWP Plywood 18mm (8\xd74 ft)",brand:"Century Ply",price:4200,old:5200,off:19,r:4.8,rv:245,badge:"BEST",bc:"hot",desc:"ISI certified boiling waterproof plywood"},
+  {id:6,cat:"Plywood",name:"Greenply MR Grade 12mm (8\xd74 ft)",brand:"Greenply",price:2800,old:3400,off:18,r:4.5,rv:132,badge:"",bc:"",desc:"Moisture resistant commercial plywood"},
+  {id:7,cat:"Plywood",name:"Phenol Plywood 12mm (8\xd74 ft)",brand:"Century",price:3400,old:4100,off:17,r:4.8,rv:38,badge:"NEW",bc:"new",desc:"High-density phenolic plywood for construction"},
+  {id:8,cat:"Plywood",name:"MDF Board 18mm (8\xd74 ft)",brand:"Action Tesa",price:2200,old:2700,off:19,r:4.5,rv:72,badge:"",bc:"",desc:"Medium density fibreboard for furniture"},
+  {id:9,cat:"Doors",name:"Solid Teak Wood Flush Door 7\xd73 ft",brand:"Local Brand",price:8500,old:10500,off:19,r:4.7,rv:63,badge:"",bc:"",desc:"Premium solid teak wood flush door"},
+  {id:10,cat:"Doors",name:"PVC Foam Door 7\xd73 ft",brand:"Local",price:3200,old:3900,off:18,r:4.4,rv:45,badge:"NEW",bc:"new",desc:"Waterproof PVC door for bathroom & kitchen"},
+  {id:11,cat:"Doors",name:"Membrane Designer Door 7\xd73 ft",brand:"Local",price:5500,old:6800,off:19,r:4.6,rv:38,badge:"",bc:"",desc:"Premium membrane finish decorative door"},
+  {id:12,cat:"Hardware",name:"Godrej 3-Lever Mortise Lock Set",brand:"Godrej",price:650,old:850,off:24,r:4.4,rv:201,badge:"SALE",bc:"sale",desc:"Heavy duty 3-lever security mortise lock"},
+  {id:13,cat:"Hardware",name:"Hafele SS Door Handle Pair",brand:"Hafele",price:480,old:600,off:20,r:4.7,rv:109,badge:"",bc:"",desc:"Premium stainless steel door handle"},
+  {id:14,cat:"Hardware",name:"Anti-Rust Heavy Door Hinge Pair",brand:"Ebco",price:120,old:150,off:20,r:4.4,rv:175,badge:"",bc:"",desc:"Heavy duty anti-rust SS door hinges"},
+  {id:15,cat:"Hardware",name:"Dorset Wooden Cabinet Knob Pair",brand:"Dorset",price:340,old:420,off:19,r:4.6,rv:98,badge:"NEW",bc:"new",desc:"Classic wooden furniture cabinet knob"},
+  {id:16,cat:"Laminates",name:"Merino Laminate Sheet 1mm",brand:"Merino",price:1200,old:1500,off:20,r:4.4,rv:81,badge:"",bc:"",desc:"High-quality decorative laminate sheet"},
+  {id:17,cat:"Laminates",name:"High Gloss Acrylic Laminate",brand:"Merino",price:1400,old:1700,off:18,r:4.7,rv:61,badge:"HOT",bc:"hot",desc:"Premium acrylic high-gloss finish sheet"},
+  {id:18,cat:"Laminates",name:"Kitply Decorative Laminate 1mm",brand:"Kitply",price:1100,old:1350,off:19,r:4.3,rv:44,badge:"",bc:"",desc:"Textured decorative laminate for furniture"},
+  {id:19,cat:"Adhesives",name:"Fevicol Marine Waterproof (5 Kg)",brand:"Fevicol",price:850,old:1000,off:15,r:4.9,rv:312,badge:"BEST",bc:"hot",desc:"#1 waterproof marine grade wood adhesive"},
+  {id:20,cat:"Adhesives",name:"Heatax Heat Resistant (5 Kg)",brand:"Heatax",price:750,old:900,off:17,r:4.6,rv:89,badge:"",bc:"",desc:"Heat resistant high-strength wood adhesive"},
+  {id:21,cat:"Adhesives",name:"Probond Premium Contact (5 Kg)",brand:"Probond",price:720,old:880,off:18,r:4.5,rv:67,badge:"NEW",bc:"new",desc:"Pro-grade contact adhesive for laminates"},
+  {id:22,cat:"Adhesives",name:"Today Bond All Purpose (5 Kg)",brand:"Today Bond",price:680,old:820,off:17,r:4.4,rv:45,badge:"NEW",bc:"new",desc:"Versatile all-purpose wood bonding adhesive"},
+];
+
+let cart=[];
+let currentCat='All';
+
+function stars(r){let s='';for(let i=1;i<=5;i++)s+=i<=Math.floor(r)?'★':'☆';return s;}
+
+function renderAllProducts(){
+  const g=document.getElementById('allProdGrid');
+  if(!g)return;
+  g.innerHTML=allProducts.map(p=>{
+    const nE=p.name.replace(/'/g,"\u2019");
+    const bE=p.brand.replace(/'/g,"\u2019");
+    const svgImg=p.img?`<img src='${p.img}' style='width:100%;height:100%;object-fit:cover;border-radius:0'>`:SVG_IMAGES[p.id]||`<svg viewBox="0 0 200 185" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="185" fill="#f0f4f8"/><text x="100" y="95" text-anchor="middle" font-size="60">${p.cat==='Glass'?'🪟':p.cat==='Plywood'?'🪵':p.cat==='Doors'?'🚪':p.cat==='Hardware'?'⚙️':p.cat==='Laminates'?'🗃️':'🧴'}</text></svg>`;
+    return `<div class="pcard" data-cat="${p.cat}" data-id="${p.id}">
+      ${p.badge?`<div class="pbadge ${p.bc}">${p.badge}</div>`:''}
+      <div class="pimg" style="background:#f8f9fa">
+        <button class="pwish" onclick="likeIt(this)">&#9825;</button>
+        ${svgImg}
+      </div>
+      <div class="pbody">
+        <div class="pbrand">${p.brand}</div>
+        <div class="pname">${p.name}</div>
+        <div class="pdesc">${p.desc}</div>
+        <div class="pstars">${stars(p.r)}<span>(${p.rv})</span></div>
+        <div class="pprice">
+          <span class="pr">&#8377;${p.price.toLocaleString('en-IN')}</span>
+          <span class="ol">&#8377;${p.old.toLocaleString('en-IN')}</span>
+          <span class="of">${p.off}% off</span>
+        </div>
+      </div>
+      <div class="pact">
+        <button class="bac" onclick="addCart(${p.id},'${nE}','&#128722;',${p.price})">&#128722; Add</button>
+        <button class="bby" onclick="buyNow('${nE}','${bE}',${p.price})">&#128172; Buy</button>
+      </div>
+    </div>`;
+  }).join('');
+  applyFilter();
+}
+
+function applyFilter(){
+  document.querySelectorAll('#allProdGrid .pcard').forEach(card=>{
+    if(currentCat==='All'||card.dataset.cat===currentCat){
+      card.style.display='';
+    }else{
+      card.style.display='none';
+    }
+  });
+}
+
+function filterCat(el,cat){
+  currentCat=cat;
+  document.querySelectorAll('.cnbtn').forEach(b=>b.classList.remove('act'));
+  if(el){
+    el.classList.add('act');
+  } else {
+    document.querySelectorAll('.cnbtn').forEach(b=>{
+      const txt=b.textContent.trim();
+      if((cat==='All'&&txt==='All')||txt===cat||
+         (cat==='Offers'&&txt==='Deals'))b.classList.add('act');
+    });
+  }
+  const icons={All:'&#127968;',Glass:'&#129695;',Plywood:'&#129397;',Doors:'&#128682;',Hardware:'&#9881;',Laminates:'&#128451;',Adhesives:'&#129748;',Offers:'&#127991;'};
+  const labels={All:'All Products',Glass:'Glass Products',Plywood:'Plywood & Boards',Doors:'Doors',Hardware:'Hardware & Fixtures',Laminates:'Laminates',Adhesives:'Adhesives & Bonds',Offers:'Deals & Offers'};
+  const h=document.getElementById('prodHeading');
+  if(h)h.innerHTML=(icons[cat]||'&#127978;')+' '+(labels[cat]||cat);
+  applyFilter();
+  setTimeout(()=>{const g=document.getElementById('allProdGrid');if(g){const y=g.getBoundingClientRect().top+window.scrollY-120;window.scrollTo({top:y,behavior:'smooth'});}},120);
+}
+
+// buyNow defined below (login-gated)
+
+renderAllProducts();
+
+// addCart defined below (login-gated)
+function updateCart(){
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const count=cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cartBadge').textContent=count;
+  document.getElementById('cartCount').textContent=count;
+  document.getElementById('mCartBadge').textContent=count;
+  document.getElementById('cartTotal').textContent='\u20B9'+total.toLocaleString('en-IN');
+  const el=document.getElementById('cartItems');
+  const ft=document.getElementById('cartFoot');
+  if(!cart.length){
+    el.innerHTML='<div class="cdempty"><div class="ce">\uD83D\uDED2</div><p>Your cart is empty!<br>Add some products.</p></div>';
+    ft.style.display='none';
+  }else{
+    ft.style.display='block';
+    el.innerHTML=cart.map(item=>'<div class="cditem"><div class="cdimg">'+item.e+'</div><div class="cdinfo"><h4>'+item.name+'</h4><div class="cdp">\u20B9'+(item.price*item.qty).toLocaleString('en-IN')+'</div><div class="qctrl"><button onclick="chQty('+item.id+',-1)">\u2212</button><span>'+item.qty+'</span><button onclick="chQty('+item.id+',1)">+</button></div></div><button class="cdmrm" onclick="rmItem('+item.id+')">\uD83D\uDDD1\uFE0F</button></div>').join('');
+  }
+}
+function chQty(id,d){const i=cart.find(x=>x.id===id);if(i){i.qty+=d;if(i.qty<=0)cart=cart.filter(x=>x.id!==id);}updateCart();}
+function rmItem(id){cart=cart.filter(x=>x.id!==id);updateCart();}
+function toggleCart(){document.getElementById('cartDrawer').classList.toggle('open');document.getElementById('cartOverlay').classList.toggle('on');}
+
+function checkoutCart(){
+  if(!currentUser){openLogin();toast('\uD83D\uDD10 Please login to checkout.');return;}
+  if(!cart.length){toast('\u26A0\uFE0F Your cart is empty!');return;}
+  const lines=cart.map(i=>'• '+i.name+' x'+i.qty+' = \u20B9'+(i.price*i.qty).toLocaleString('en-IN')).join('\n');
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const msg='Hello! I want to place an order:\n\n'+lines+'\n\n*Total: \u20B9'+total.toLocaleString('en-IN')+'*\n\nPlease confirm availability & delivery. \uD83D\uDE4F';
+  window.open('https://wa.me/919478791010?text='+encodeURIComponent(msg),'_blank');
+}
+
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sbOverlay').classList.toggle('on');
+  document.getElementById('hbg').classList.toggle('open');
+}
+let cur=0,N=4;
+function buildDots(){document.getElementById('dots').innerHTML=Array.from({length:N},(_,i)=>'<div class="sdot'+(i===cur?' on':'')+'" onclick="goSlide('+i+')"></div>').join('');}
+function goSlide(n){cur=(n+N)%N;document.getElementById('track').style.transform='translateX(-'+(cur*100)+'%)';buildDots();}
+function slide(d){goSlide(cur+d);}
+buildDots();
+setInterval(()=>slide(1),4200);
+/* ═══════════════ SEARCH ENGINE ═══════════════
+   - runSearch()       : triggered by sinput oninput / onfocus
+   - syncSearch(v)     : syncs mobile sinput2 → sinput → runSearch
+   - triggerSearch()   : called by 🔍 button, scrolls to results
+   - doSearch(q,cat)   : core — filters grid + populates dropdowns
+   - selectSuggest()   : called when user taps a suggestion
+   - onSearchCatChange : called when category select changes
+   - initSearch()      : sets up any extra wiring on page load
+═══════════════════════════════════════════════ */
+
+function initSearch(){
+  // Nothing extra needed — all wired via inline handlers + the functions below
+}
+
+/* Core search: filters the live product grid + shows suggestions */
+function doSearch(q, catFilter){
+  q = (q||'').trim().toLowerCase();
+  catFilter = catFilter || 'All';
+
+  // Close suggestion dropdowns if query is empty, restore category view
+  const sugg  = document.getElementById('sugg');
+  const sugg2 = document.getElementById('sugg2');
+  if(!q){
+    if(sugg)  sugg.classList.remove('show');
+    if(sugg2) sugg2.classList.remove('show');
+    applyFilter();  // restore category filter
+    const icons ={All:'&#127968;',Glass:'&#129695;',Plywood:'&#129397;',Doors:'&#128682;',Hardware:'&#9881;',Laminates:'&#128451;',Adhesives:'&#129748;',Offers:'&#127991;'};
+    const labels={All:'All Products',Glass:'Glass Products',Plywood:'Plywood & Boards',Doors:'Doors',Hardware:'Hardware & Fixtures',Laminates:'Laminates',Adhesives:'Adhesives & Bonds',Offers:'Deals & Offers'};
+    const h=document.getElementById('prodHeading');
+    if(h)h.innerHTML=(icons[currentCat]||'&#127978;')+' '+(labels[currentCat]||currentCat);
+    return;
+  }
+
+  // Match products — always search the LIVE allProducts array (includes admin-added ones)
+  const catEmoji={Glass:'\uD83E\uDEDF',Plywood:'\uD83E\uDEB5',Doors:'\uD83D\uDEAA',Hardware:'\u2699\uFE0F',Laminates:'\uD83D\uDDC3\uFE0F',Adhesives:'\uD83E\uDDF4'};
+  const matches = allProducts.filter(p=>{
+    const catOk = catFilter==='All' || p.cat===catFilter;
+    return catOk && (
+      p.name.toLowerCase().includes(q) ||
+      p.brand.toLowerCase().includes(q) ||
+      p.cat.toLowerCase().includes(q)   ||
+      (p.desc && p.desc.toLowerCase().includes(q))
+    );
+  });
+
+  // Build suggestion HTML (used for both desktop + mobile dropdowns)
+  let suggHTML = '';
+  if(matches.length){
+    suggHTML = matches.slice(0,8).map(p=>{
+      // Escape name for safe inline onclick attribute
+      const safeName = p.name.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+      return '<div class="sug-item" onmousedown="selectSuggest('+p.id+',\''+safeName+'\')">'
+        + (catEmoji[p.cat]||'\uD83D\uDED2')+' <strong>'+p.name+'</strong>'
+        + '<span style="color:#aaa;font-size:11px;float:right">'+p.brand+'</span>'
+        + '</div>';
+    }).join('');
+  } else {
+    suggHTML = '<div class="sug-item" style="color:#aaa;cursor:default;text-align:center">'
+      + 'No results for \u201C' + q.substring(0,25) + '\u201D</div>';
+  }
+  if(sugg)  { sugg.innerHTML  = suggHTML; sugg.classList.add('show');  }
+  if(sugg2) { sugg2.innerHTML = suggHTML; sugg2.classList.add('show'); }
+
+  // Filter the visible product cards in the grid
+  const cards = document.querySelectorAll('#allProdGrid .pcard');
+  let visible = 0;
+  cards.forEach(card=>{
+    const pid  = parseInt(card.dataset.id);
+    const prod = allProducts.find(p=>p.id===pid);
+    if(!prod){ card.style.display='none'; return; }
+    const catOk = catFilter==='All' || prod.cat===catFilter;
+    const hit = catOk && (
+      prod.name.toLowerCase().includes(q) ||
+      prod.brand.toLowerCase().includes(q) ||
+      prod.cat.toLowerCase().includes(q)   ||
+      (prod.desc && prod.desc.toLowerCase().includes(q))
+    );
+    card.style.display = hit ? '' : 'none';
+    if(hit) visible++;
+  });
+
+  // Update section heading
+  const h = document.getElementById('prodHeading');
+  const rawQ = document.getElementById('sinput')
+             ? document.getElementById('sinput').value.trim()
+             : q;
+  if(h) h.innerHTML = '\uD83D\uDD0D Search: \u201C' + rawQ + '\u201D ('
+    + visible + ' product' + (visible===1?'':'s') + ' found)';
+}
+
+/* Called by sinput oninput / onfocus */
+function runSearch(){
+  const inp = document.getElementById('sinput');
+  if(!inp) return;
+  const cat = (document.getElementById('searchCatFilter')||{}).value || 'All';
+  doSearch(inp.value, cat);
+}
+
+/* Syncs mobile input to desktop, then runs search */
+function syncSearch(val){
+  const inp = document.getElementById('sinput');
+  if(inp) inp.value = val;
+  const cat = (document.getElementById('searchCatFilter')||{}).value || 'All';
+  doSearch(val, cat);
+}
+
+/* Called by the 🔍 button (desktop + mobile) */
+function triggerSearch(){
+  const inp = document.getElementById('sinput');
+  if(!inp) return;
+  const cat = (document.getElementById('searchCatFilter')||{}).value || 'All';
+  doSearch(inp.value, cat);
+  // Scroll to results
+  const g = document.getElementById('allProdGrid');
+  if(g){ const y=g.getBoundingClientRect().top+window.scrollY-120; window.scrollTo({top:y,behavior:'smooth'}); }
+  // Close dropdowns
+  hideSug();
+}
+
+/* Category select changed */
+function onSearchCatChange(cat){
+  runSearch(); // re-run with new cat filter
+}
+
+/* User taps a suggestion item */
+function selectSuggest(id, name){
+  const inp  = document.getElementById('sinput');
+  const inp2 = document.getElementById('sinput2');
+  if(inp)  inp.value  = name;
+  if(inp2) inp2.value = name;
+  hideSug();
+  const cat = (document.getElementById('searchCatFilter')||{}).value || 'All';
+  doSearch(name, cat);
+  // Scroll to results
+  setTimeout(()=>{
+    const g=document.getElementById('allProdGrid');
+    if(g){const y=g.getBoundingClientRect().top+window.scrollY-120;window.scrollTo({top:y,behavior:'smooth'});}
+  },100);
+}
+
+/* Hide suggestions (with small delay to allow click to register) */
+function hideSug(){
+  setTimeout(()=>{
+    const s1=document.getElementById('sugg');
+    const s2=document.getElementById('sugg2');
+    if(s1) s1.classList.remove('show');
+    if(s2) s2.classList.remove('show');
+  }, 220);
+}
+
+/* Legacy stubs — kept for any old references */
+function showSug(){ runSearch(); }
+function setCat(el,cat){filterCat(el,cat);}
+function likeIt(btn){btn.classList.toggle('liked');btn.innerHTML=btn.classList.contains('liked')?'\u2764\uFE0F':'\u2661';if(btn.classList.contains('liked'))toast('\u2764\uFE0F Added to Wishlist!');}
+let secs=3*3600+47*60+22;
+setInterval(()=>{
+  secs=Math.max(0,secs-1);
+  document.getElementById('ch').textContent=String(Math.floor(secs/3600)).padStart(2,'0');
+  document.getElementById('cm').textContent=String(Math.floor((secs%3600)/60)).padStart(2,'0');
+  document.getElementById('cs').textContent=String(secs%60).padStart(2,'0');
+},1000);
+let toastTimer;
+function toast(msg){
+  clearTimeout(toastTimer);
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2600);
+}
+updateCart();
+
+
+
+/* ════════════════════════════════════════════════════
+   CONSTANTS
+════════════════════════════════════════════════════ */
+const ADMIN_PHONE = '9478791010';
+let ADMIN_PASS    = localStorage.getItem('hgp_adminpass')||'admin1234';
+let currentUser   = null;
+
+/* ── Local Storage helpers ── */
+const LS = {
+  get:(k,d=null)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch{return d;}},
+  set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch{}},
+  push:(k,item)=>{const a=LS.get(k,[]); a.unshift(item); LS.set(k,a.slice(0,200));}
+};
+
+function getUsers(){return LS.get('hgp_users',[]);}
+function saveUsers(u){LS.set('hgp_users',u);}
+function getSess(){return LS.get('hgp_sess',null);}
+function saveSess(u){LS.set('hgp_sess',u);}
+function addHistory(u){
+  LS.push('hgp_history',{
+    name:u.name, phone:u.phone, city:u.city||'-',
+    time: new Date().toLocaleString('en-IN'),
+    device: navigator.userAgent.includes('Mobile')?'📱 Mobile':'💻 Desktop',
+    role: u.role
+  });
+}
+
+/* ═══════════════ SITE LOCK ═══════════════ */
+function lockTab(t){
+  document.getElementById('lockLoginForm').style.display  = t==='login' ?'':'none';
+  document.getElementById('lockSignupForm').style.display = t==='signup'?'':'none';
+  document.getElementById('ltLogin').classList.toggle('act',t==='login');
+  document.getElementById('ltSign').classList.toggle('act',t==='signup');
+}
+
+function doLockLogin(){
+  const phone=document.getElementById('llPhone').value.replace(/\s/g,'').replace('+91','');
+  const pass =document.getElementById('llPass').value.trim();
+  const err  =document.getElementById('llErr');
+  if(!phone||!pass){err.textContent='Please enter mobile and password.';return;}
+  // Admin
+  if(phone===ADMIN_PHONE && pass===ADMIN_PASS){
+    currentUser={name:'Admin',phone:ADMIN_PHONE,role:'admin',city:'Admin'};
+    saveSess(currentUser); addHistory(currentUser); unlockSite();
+    toast('✅ Admin logged in!'); return;
+  }
+  // User
+  const u=getUsers().find(x=>x.phone===phone&&x.pass===pass);
+  if(!u){err.textContent='❌ Invalid mobile or password.';return;}
+  currentUser={name:u.name,phone:u.phone,city:u.city||'-',role:'user'};
+  saveSess(currentUser); addHistory(currentUser); unlockSite();
+  toast('✅ Welcome, '+u.name+'!');
+}
+
+function doLockSignup(){
+  const name =document.getElementById('lsName').value.trim();
+  const phone=document.getElementById('lsPhone').value.replace(/\s/g,'');
+  const pass =document.getElementById('lsPass').value;
+  const city =document.getElementById('lsCity').value.trim();
+  const err  =document.getElementById('lsErr');
+  if(!name||!phone||!pass){err.textContent='Name, mobile & password are required.';return;}
+  if(phone.length<10){err.textContent='Enter a valid 10-digit mobile.';return;}
+  if(pass.length<6){err.textContent='Password must be at least 6 characters.';return;}
+  const users=getUsers();
+  if(users.find(u=>u.phone===phone)){err.textContent='This mobile is already registered.';return;}
+  users.push({name,phone,pass,city,joined:new Date().toLocaleDateString('en-IN')});
+  saveUsers(users);
+  currentUser={name,phone,city,role:'user'};
+  saveSess(currentUser); addHistory(currentUser); unlockSite();
+  toast('🎉 Account created! Welcome, '+name+'!');
+}
+
+function unlockSite(){
+  const lock=document.getElementById('siteLock');
+  const main=document.getElementById('mainContent');
+  if(lock){lock.classList.add('hide');lock.style.display='none';}
+  if(main)main.style.display='block';
+  applyUserUI();
+}
+
+function initAuth(){
+  const s=getSess();
+  if(s&&s.phone){
+    currentUser=s;
+    // Ensure UI is unlocked (early script may have already hidden lock visually)
+    const lock=document.getElementById('siteLock');
+    const main=document.getElementById('mainContent');
+    if(lock){lock.classList.add('hide');lock.style.display='none';}
+    if(main)main.style.display='block';
+    applyUserUI();
+  }
+  // else: lock screen stays visible
+}
+
+/* ═══════════════ USER UI ═══════════════ */
+function applyUserUI(){
+  if(!currentUser)return;
+  const isA=currentUser.phone===ADMIN_PHONE;
+  // Navbar login button text
+  const lbt=document.getElementById('loginBtnTxt');
+  if(lbt)lbt.textContent=isA?'Admin':currentUser.name.split(' ')[0];
+  // Sidebar welcome
+  const sw=document.getElementById('sbWelcome');
+  if(sw)sw.textContent='\uD83D\uDC4B Hi, '+(isA?'Admin':currentUser.name)+'!';
+  const ss=document.getElementById('sbSubtitle');
+  if(ss)ss.textContent=isA?'You have admin access.':'Welcome back!';
+  // Show logout section
+  const ls=document.getElementById('sbLogoutSection');
+  if(ls)ls.style.display='block';
+  // Show/hide Admin Panel button
+  const ab=document.getElementById('sbAdminBtn');
+  if(ab)ab.style.display=isA?'block':'none';
+}
+
+function handleLoginClick(){
+  if(currentUser){
+    toggleSidebar();
+  } else {
+    const lock=document.getElementById('siteLock');
+    if(lock){lock.classList.remove('hide');lock.style.display='flex';}
+  }
+}
+
+function doLogout(){
+  currentUser=null;
+  localStorage.removeItem('hgp_sess');
+  // Hide main content, show lock screen
+  const main=document.getElementById('mainContent');
+  const lock=document.getElementById('siteLock');
+  if(main)main.style.display='none';
+  if(lock){lock.classList.remove('hide');lock.style.display='flex';}
+  // Reset login form
+  lockTab('login');
+  const lp=document.getElementById('llPhone'); if(lp)lp.value='';
+  const lw=document.getElementById('llPass');  if(lw)lw.value='';
+  const le=document.getElementById('llErr');   if(le)le.textContent='';
+  // Reset sidebar UI
+  const lbt=document.getElementById('loginBtnTxt'); if(lbt)lbt.textContent='Login';
+  const sw=document.getElementById('sbWelcome');  if(sw)sw.textContent='\uD83D\uDC64 Welcome, Guest!';
+  const ss=document.getElementById('sbSubtitle'); if(ss)ss.textContent='Login or Sign Up to continue';
+  const ls=document.getElementById('sbLogoutSection'); if(ls)ls.style.display='none';
+  const ab=document.getElementById('sbAdminBtn'); if(ab)ab.style.display='none';
+  toast('\uD83D\uDC4B Logged out!');
+}
+
+/* old modal login stubs (for any references) */
+function openLogin(){document.getElementById('siteLock').classList.remove('hide');}
+function closeLogin(){}
+function switchTab(t){lockTab(t);}
+function doLogin(){doLockLogin();}
+function doSignup(){doLockSignup();}
+
+/* ═══════════════ ADMIN PANEL ═══════════════ */
+function openAdmin(){
+  if(!currentUser||currentUser.phone!==ADMIN_PHONE){toast('❌ Admin access only.');return;}
+  updateAdminStats();
+  admTab('products'); renderAdminTable();
+  document.getElementById('adminPanel').classList.add('show');
+}
+function closeAdmin(){document.getElementById('adminPanel').classList.remove('show');}
+
+function admTab(name){
+  document.querySelectorAll('.adm-tab').forEach((b,i)=>{
+    const names=['products','addprod','users','enquiries','settings'];
+    b.classList.toggle('on',names[i]===name);
+  });
+  document.querySelectorAll('.adm-pane').forEach(p=>p.classList.remove('on'));
+  const pane=document.getElementById('apane-'+name);
+  if(pane)pane.classList.add('on');
+  if(name==='users'){renderUsersTable();renderHistTable();}
+  if(name==='enquiries'){renderAdminEnquiries();}
+  if(name==='settings'){loadSettings();}
+}
+
+function updateAdminStats(){
+  const prods=getProds();
+  const users=getUsers();
+  const hist =LS.get('hgp_history',[]);
+  const today=new Date().toLocaleDateString('en-IN');
+  const todayLogins=hist.filter(h=>h.time.startsWith(today)||h.time.includes(today.split('/').reverse().join('/'))).length;
+  const enqs=LS.get('hgp_enquiries',[]);
+  document.getElementById('adStat1').textContent=prods.length;
+  document.getElementById('adStat2').textContent=users.length;
+  document.getElementById('adStat3').textContent=todayLogins;
+  document.getElementById('adStat4').textContent=enqs.length;
+}
+
+/* ── Products ── */
+function getProds(){
+  const s=localStorage.getItem('hgp_products');
+  if(s){try{return JSON.parse(s);}catch{}}
+  return JSON.parse(JSON.stringify(allProducts));
+}
+function saveProds(p){localStorage.setItem('hgp_products',JSON.stringify(p));}
+
+function renderAdminTable(){
+  const prods=getProds();
+  const q=(document.getElementById('adminSearch')||{}).value||'';
+  const cf=(document.getElementById('adminFilterCat')||{}).value||'';
+  const filtered=prods.filter(p=>
+    (!q||p.name.toLowerCase().includes(q.toLowerCase())||p.brand.toLowerCase().includes(q.toLowerCase()))&&
+    (!cf||p.cat===cf)
+  );
+  const el=document.getElementById('adminProdCount');
+  if(el)el.textContent='('+prods.length+' total, '+filtered.length+' shown)';
+  const bg={'Glass':'#dbeeff','Plywood':'#fdf3e3','Doors':'#f5ede3','Hardware':'#eef0f5','Laminates':'#f5eaff','Adhesives':'#eaf8ea'};
+  const tb=document.getElementById('adminTbody');
+  if(!tb)return;
+  tb.innerHTML=filtered.map(p=>{
+    const imgHtml=p.img
+      ?`<img src="${p.img}" style="width:44px;height:44px;object-fit:cover;border-radius:8px;border:1px solid #eee">`
+      :`<div style="width:44px;height:44px;border-radius:8px;background:${bg[p.cat]||'#f0f0f0'};display:flex;align-items:center;justify-content:center;font-size:22px">${p.cat==='Glass'?'🪟':p.cat==='Plywood'?'🪵':p.cat==='Doors'?'🚪':p.cat==='Hardware'?'⚙️':p.cat==='Laminates'?'🗃️':'🧴'}</div>`;
+    return `<tr>
+      <td style="color:#aaa;font-weight:700">${p.id}</td>
+      <td>${imgHtml}</td>
+      <td><div style="font-weight:700;font-size:13px;max-width:200px">${p.name}</div><div style="color:#aaa;font-size:11px;margin-top:2px">${p.desc}</div></td>
+      <td>${p.brand}</td>
+      <td><span style="background:${bg[p.cat]||'#f0f0f0'};padding:2px 8px;border-radius:20px;font-size:11px;font-weight:700">${p.cat}</span></td>
+      <td style="font-weight:800;color:#1a3c6e">\u20B9${p.price.toLocaleString('en-IN')}</td>
+      <td style="color:#aaa;font-size:11px;text-decoration:line-through">\u20B9${p.old.toLocaleString('en-IN')}</td>
+      <td style="white-space:nowrap">
+        <button type="button" class="adm-edit" onclick="openEdit(${p.id})">\u270F\uFE0F Edit</button>
+        <button type="button" class="adm-del" onclick="adminDel(${p.id})">\uD83D\uDDD1\uFE0F</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function previewImg(input,previewId,b64Id){
+  const file=input.files[0];
+  if(!file)return;
+  if(file.size>2*1024*1024){toast('\u274C Image must be under 2MB');input.value='';return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const prev=document.getElementById(previewId);
+    const b64=document.getElementById(b64Id);
+    const ph=input.parentElement.querySelector('[id$="Placeholder"]');
+    if(prev){prev.src=e.target.result;prev.classList.add('show');}
+    if(b64)b64.value=e.target.result;
+    if(ph)ph.style.display='none';
+  };
+  reader.readAsDataURL(file);
+}
+
+function adminAddProduct(){
+  const name =document.getElementById('apName').value.trim();
+  const brand=document.getElementById('apBrand').value.trim();
+  const cat  =document.getElementById('apCat').value;
+  const price=parseInt(document.getElementById('apPrice').value)||0;
+  const old  =parseInt(document.getElementById('apOld').value)||price;
+  const desc =document.getElementById('apDesc').value.trim()||'Quality product';
+  const img  =document.getElementById('apImgB64').value||'';
+  if(!name||!brand||!cat||!price){toast('\u274C Fill required fields (*)');return;}
+  const bgMap={Glass:'pimg-glass',Plywood:'pimg-wood',Doors:'pimg-door',Hardware:'pimg-hw',Laminates:'pimg-lam',Adhesives:'pimg-adh'};
+  const prods=getProds();
+  const newId=Math.max(...prods.map(p=>p.id),22)+1;
+  const off=old>price?Math.round((old-price)/old*100):0;
+  const np={id:newId,cat,name,brand,bg:bgMap[cat]||'pimg-glass',price,old,off,r:5.0,rv:0,badge:'NEW',bc:'new',desc,img};
+  prods.push(np); saveProds(prods);
+  allProducts.push(np);
+  renderAllProducts(); renderAdminTable(); updateAdminStats();
+  ['apName','apBrand','apPrice','apOld','apDesc','apImgB64'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('apCat').value='';
+  const pr=document.getElementById('apImgPreview');if(pr){pr.src='';pr.classList.remove('show');}
+  const ph=document.getElementById('apImgPlaceholder');if(ph)ph.style.display='';
+  toast('\u2705 Product "'+name+'" added!');
+  admTab('products');
+  // Re-run live search so new product appears immediately if search is active
+  const sinp=document.getElementById('sinput');
+  if(sinp&&sinp.value.trim()){
+    const cat=(document.getElementById('searchCatFilter')||{}).value||'All';
+    doSearch(sinp.value,cat);
+  }
+}
+
+/* Custom confirm state */
+let _pendingDelId = null;
+
+function adminDel(id){
+  // Find product name for the confirmation message
+  const prod = allProducts.find(p=>p.id===id);
+  const name = prod ? prod.name : 'this product';
+  _pendingDelId = id;
+  // Show custom in-page confirm dialog (window.confirm blocked inside modals on Android)
+  const msg = document.getElementById('ccdMsg');
+  if(msg) msg.textContent = '\u201C' + name.substring(0,40) + '\u201D will be permanently removed from the store and customer view.';
+  const dlg = document.getElementById('customConfirm');
+  if(dlg) dlg.classList.add('show');
+}
+
+let _ccdMode = 'product'; // 'product' or 'user'
+
+function ccdCancel(){
+  _pendingDelId = null;
+  const dlg = document.getElementById('customConfirm');
+  if(dlg) dlg.classList.remove('show');
+}
+
+function ccdConfirm(){
+  const dlg = document.getElementById('customConfirm');
+  if(dlg) dlg.classList.remove('show');
+
+  if(_ccdMode === 'user'){
+    const phone = _pendingDelUser;
+    _pendingDelUser = null;
+    _ccdMode = 'product';
+    if(!phone) return;
+    saveUsers(getUsers().filter(u=>u.phone!==phone));
+    renderUsersTable(); updateAdminStats(); toast('\uD83D\uDDD1\uFE0F User deleted.');
+    return;
+  }
+
+  const id = _pendingDelId;
+  _pendingDelId = null;
+  _ccdMode = 'product';
+  if(id === null || id === undefined) return;
+
+  // 1. Remove from localStorage so deletion persists across page reloads
+  const prods = getProds().filter(p => p.id !== id);
+  saveProds(prods);
+
+  // 2. Remove from in-memory allProducts array (drives customer-facing grid)
+  const idx = allProducts.findIndex(p => p.id === id);
+  if(idx > -1) allProducts.splice(idx, 1);
+
+  // 3. Re-render customer product grid immediately — item vanishes from home screen
+  renderAllProducts();
+
+  // 4. Re-render admin products table — row disappears
+  renderAdminTable();
+
+  // 5. Update admin stat counters
+  updateAdminStats();
+
+  // 6. Refresh live search results if search is active
+  const sinp = document.getElementById('sinput');
+  if(sinp && sinp.value.trim()){
+    const cat = (document.getElementById('searchCatFilter')||{}).value || 'All';
+    doSearch(sinp.value, cat);
+  }
+
+  toast('\uD83D\uDDD1\uFE0F Product deleted!');
+}
+
+function openEdit(id){
+  const p=getProds().find(x=>x.id===id);
+  if(!p)return;
+  document.getElementById('editId').value=id;
+  document.getElementById('editName').value=p.name;
+  document.getElementById('editPrice').value=p.price;
+  document.getElementById('editOld').value=p.old;
+  document.getElementById('editDesc').value=p.desc;
+  document.getElementById('editImgB64').value=p.img||'';
+  const ep=document.getElementById('editImgPreview');
+  if(ep){ep.src=p.img||'';ep.classList.toggle('show',!!p.img);}
+  document.getElementById('editModal').classList.add('show');
+}
+
+function saveEdit(){
+  const id   =parseInt(document.getElementById('editId').value);
+  const name =document.getElementById('editName').value.trim();
+  const price=parseInt(document.getElementById('editPrice').value)||0;
+  const old  =parseInt(document.getElementById('editOld').value)||price;
+  const desc =document.getElementById('editDesc').value.trim();
+  const img  =document.getElementById('editImgB64').value||'';
+  if(!name||!price){toast('\u274C Name and price are required.');return;}
+  const prods=getProds();
+  const idx=prods.findIndex(p=>p.id===id);
+  if(idx>-1){
+    prods[idx]={...prods[idx],name,price,old,desc,img,off:old>price?Math.round((old-price)/old*100):0};
+    saveProds(prods);
+    const ai=allProducts.findIndex(p=>p.id===id);
+    if(ai>-1)allProducts[ai]={...allProducts[ai],...prods[idx]};
+  }
+  renderAllProducts(); renderAdminTable();
+  document.getElementById('editModal').classList.remove('show');
+  toast('\u2705 Product updated!');
+  // Refresh live search results
+  const sinp=document.getElementById('sinput');
+  if(sinp&&sinp.value.trim()){
+    const cat=(document.getElementById('searchCatFilter')||{}).value||'All';
+    doSearch(sinp.value,cat);
+  }
+}
+
+/* ── Users & History ── */
+function renderUsersTable(){
+  const users=getUsers();
+  const tb=document.getElementById('usersTbody');
+  if(!tb)return;
+  if(!users.length){tb.innerHTML='<tr><td colspan="7" style="text-align:center;color:#aaa;padding:20px">No registered users yet.</td></tr>';return;}
+  const sess=getSess();
+  tb.innerHTML=users.map((u,i)=>{
+    const isActive=sess&&sess.phone===u.phone;
+    return `<tr>
+      <td style="color:#aaa">${i+1}</td>
+      <td style="font-weight:700">${u.name}</td>
+      <td>${u.phone}</td>
+      <td>${u.city||'-'}</td>
+      <td style="font-size:11.5px;color:#888">${u.joined||'-'}</td>
+      <td><span class="badge-online ${isActive?'active':'offline'}">${isActive?'\u2022 Active':'Offline'}</span></td>
+      <td><button type="button" onclick="deleteUser('${u.phone}')" style="background:#fee2e2;color:#dc2626;border:2px solid #fca5a5;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:12px;font-weight:700;touch-action:manipulation">\uD83D\uDDD1\uFE0F Del</button></td>
+    </tr>`;
+  }).join('');
+}
+
+let _pendingDelUser = null;
+function deleteUser(phone){
+  _pendingDelUser = phone;
+  const users = getUsers();
+  const u = users.find(x=>x.phone===phone);
+  const uname = u ? u.name : phone;
+  const msg = document.getElementById('ccdMsg');
+  if(msg) msg.textContent = 'User \u201C' + uname + '\u201D will be permanently deleted.';
+  // Reuse the custom dialog but wire it to user delete
+  _ccdMode = 'user';
+  const dlg = document.getElementById('customConfirm');
+  if(dlg) dlg.classList.add('show');
+}
+
+function renderHistTable(){
+  const hist=LS.get('hgp_history',[]);
+  const q=(document.getElementById('histSearch')||{}).value||'';
+  const tb=document.getElementById('histTbody');
+  if(!tb)return;
+  const filtered=hist.filter(h=>!q||(h.name+h.phone+h.city).toLowerCase().includes(q.toLowerCase()));
+  if(!filtered.length){tb.innerHTML='<tr><td colspan="6" style="text-align:center;color:#aaa;padding:20px">No login history yet.</td></tr>';return;}
+  tb.innerHTML=filtered.map((h,i)=>`<tr>
+    <td style="color:#aaa">${i+1}</td>
+    <td style="font-weight:700">${h.name}</td>
+    <td>${h.phone}</td>
+    <td style="font-size:12px;color:#555">${h.time}</td>
+    <td style="color:#888">${h.city||'-'}</td>
+    <td style="font-size:12px">${h.device}</td>
+  </tr>`).join('');
+}
+
+function clearHistory(){
+  if(!confirm('Clear all login history?'))return;
+  LS.set('hgp_history',[]);
+  renderHistTable(); toast('\uD83D\uDDD1\uFE0F History cleared.');
+}
+
+/* ── Enquiries ── */
+function renderAdminEnquiries(){
+  const enqs=LS.get('hgp_enquiries',[]);
+  const el=document.getElementById('enqListAdmin');
+  if(!el)return;
+  if(!enqs.length){el.innerHTML='<div style="text-align:center;padding:30px;color:#aaa">No enquiries yet.</div>';return;}
+  el.innerHTML=enqs.map((e,i)=>`<div class="enq-row-item">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start">
+      <h4>\uD83D\uDC64 ${e.name} &nbsp;&mdash;&nbsp; \uD83D\uDCDE ${e.phone}</h4>
+      <button onclick="delEnquiry(${i})" style="background:none;border:none;cursor:pointer;color:#aaa;font-size:16px">\u2715</button>
+    </div>
+    <p><b>Category:</b> ${e.cat||'General'} &nbsp;|&nbsp; <b>City:</b> ${e.city||'-'}</p>
+    <p style="margin-top:4px">\uD83D\uDCAC ${e.msg}</p>
+    <div class="etime">\uD83D\uDD50 ${e.time}</div>
+  </div>`).join('');
+}
+
+function delEnquiry(idx){
+  const e=LS.get('hgp_enquiries',[]);
+  e.splice(idx,1); LS.set('hgp_enquiries',e);
+  renderAdminEnquiries(); updateAdminStats();
+}
+function clearEnquiries(){
+  if(!confirm('Clear all enquiries?'))return;
+  LS.set('hgp_enquiries',[]);
+  renderAdminEnquiries(); updateAdminStats(); toast('\uD83D\uDDD1\uFE0F Enquiries cleared.');
+}
+
+/* ── Settings ── */
+function loadSettings(){
+  const s=LS.get('hgp_settings',{});
+  if(s.shopName)document.getElementById('setName').value=s.shopName;
+  if(s.wa)document.getElementById('setWA').value=s.wa;
+  if(s.wa2)document.getElementById('setWA2').value=s.wa2;
+  if(s.addr)document.getElementById('setAddr').value=s.addr;
+  if(s.flash)document.getElementById('setFlash').value=s.flash;
+}
+function saveSettings(){
+  LS.set('hgp_settings',{
+    shopName:document.getElementById('setName').value,
+    wa:document.getElementById('setWA').value,
+    wa2:document.getElementById('setWA2').value,
+    addr:document.getElementById('setAddr').value,
+    flash:document.getElementById('setFlash').value
+  });
+  toast('\u2705 Settings saved!');
+}
+function changeAdminPass(){
+  const old=document.getElementById('setPOld').value;
+  const nw =document.getElementById('setPNew').value;
+  const cf =document.getElementById('setPConf').value;
+  if(old!==ADMIN_PASS){toast('\u274C Current password is wrong.');return;}
+  if(nw.length<6){toast('\u274C New password must be 6+ chars.');return;}
+  if(nw!==cf){toast('\u274C Passwords do not match.');return;}
+  ADMIN_PASS=nw; localStorage.setItem('hgp_adminpass',nw);
+  document.getElementById('setPOld').value='';document.getElementById('setPNew').value='';document.getElementById('setPConf').value='';
+  toast('\u2705 Admin password updated!');
+}
+
+/* ── Enquiry form save to LS ── */
+function submitEnqDirect(){
+  const name=document.getElementById('enqName').value.trim();
+  const phone=document.getElementById('enqPhone').value.trim();
+  const cat =document.getElementById('enqCat').value;
+  const city=document.getElementById('enqCity').value.trim();
+  const msg =document.getElementById('enqMsg').value.trim();
+  if(!name||!phone||!msg){toast('\u274C Please fill Name, Mobile & Message.');return;}
+  LS.push('hgp_enquiries',{name,phone,cat,city,msg,time:new Date().toLocaleString('en-IN')});
+  document.getElementById('enqSuccess').style.display='block';
+  ['enqName','enqPhone','enqMsg','enqCity'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  document.getElementById('enqCat').value='';
+  setTimeout(()=>{const s=document.getElementById('enqSuccess');if(s)s.style.display='none';},4000);
+  toast('\u2705 Enquiry saved! We\'ll contact you soon.');
+}
+
+
+/* ════════════════════════════════════════════════════
+   OVERRIDE addCart & buyNow — require login
+════════════════════════════════════════════════════ */
+// addCart and buyNow are login-gated (functions defined earlier, wrapped here)
+function _addCartCore(id,name,e,price){
+  const ex=cart.find(i=>i.id===id);
+  if(ex)ex.qty++;else cart.push({id,name,e,price,qty:1});
+  updateCart();toast('\u2705 '+name.substring(0,22)+'\u2026 added!');
+}
+function addCart(id,name,e,price){
+  if(!currentUser){openLogin();toast('\uD83D\uDD10 Please login to add to cart.');return;}
+  _addCartCore(id,name,e,price);
+}
+
+function _buyNowCore(name,brand,price){
+  const msg='Hi! I want to buy *'+name+'* by '+brand+'.\nPrice: \u20B9'+price.toLocaleString('en-IN')+'\nPlease confirm availability & delivery to Chamkaur Sahib. \uD83D\uDE4F';
+  window.open('https://wa.me/919478791010?text='+encodeURIComponent(msg),'_blank');
+}
+function buyNow(name,brand,price){
+  if(!currentUser){openLogin();toast('\uD83D\uDD10 Please login to buy.');return;}
+  _buyNowCore(name,brand,price);
+}
+
+
+function loadStoredProducts(){
+  const s=localStorage.getItem('hgp_products');
+  if(s){
+    try{
+      const stored=JSON.parse(s);
+      if(Array.isArray(stored)&&stored.length>=0){
+        // Replace allProducts entirely with stored list — 
+        // this means admin deletions persist across page reloads
+        allProducts.length=0;
+        stored.forEach(p=>allProducts.push(p));
+      }
+    }catch(e){}
+  }
+  // If nothing stored yet, allProducts keeps its default values
+}
+
+/* ════════════════════════════════════════════════════
+   INIT — run on page load
+════════════════════════════════════════════════════ */
+loadStoredProducts();
+renderAllProducts();
+initSearch();
+initAuth();
+
+</script>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<style>
+.wa-float{position:fixed;bottom:84px;right:18px;z-index:1200;width:54px;height:54px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 4px 18px rgba(37,211,102,.5);text-decoration:none;transition:.2s;}
+.wa-float:hover{transform:scale(1.1);background:#1ebe5b;}
+@media(min-width:769px){.wa-float{bottom:24px;right:24px;}}
+</style>
+<a href="https://wa.me/919478791010" target="_blank" class="wa-float" title="Chat on WhatsApp">💬</a>
+
+
+</div><!-- /mainContent -->
+
+<!-- CUSTOM DELETE CONFIRM DIALOG -->
+<div id="customConfirm">
+  <div class="ccd-box">
+    <div class="ccd-icon">🗑️</div>
+    <div class="ccd-title">Delete Product?</div>
+    <div class="ccd-msg" id="ccdMsg">This product will be permanently removed from the store and customer view.</div>
+    <div class="ccd-btns">
+      <button class="ccd-cancel" onclick="ccdCancel()">✕ Cancel</button>
+      <button class="ccd-ok" onclick="ccdConfirm()">🗑️ Yes, Delete</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
